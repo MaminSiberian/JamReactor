@@ -7,6 +7,8 @@ public class MovementEnemyOnSpots : MonoBehaviour
     [Header("Spots properties")]
     public Transform[] moveSpots;
     private int countSpot;
+    [Header("Force")]
+    public float force;
     
 
     public float startMoveTime;
@@ -53,4 +55,18 @@ public class MovementEnemyOnSpots : MonoBehaviour
         }
         return temp;
     }
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Col");
+        if(collision.collider.CompareTag("Player"))
+        {
+            Debug.Log("Player");
+            var direction = transform.position - collision.transform.position;
+            collision.rigidbody.AddForce(-direction * force * Time.deltaTime,
+                ForceMode2D.Impulse);
+            Debug.Log("off");
+        }
+    }
+    
+    
 }
