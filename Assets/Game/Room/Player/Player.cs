@@ -8,6 +8,7 @@ namespace Room
         [SerializeField] private float playerSpeed;
         [SerializeField] private SpriteRenderer sprite;
         [SerializeField] private Transform oculusSeat;
+
         private Rigidbody2D rb;
         private float horizontalSpeed;
         private Animator anim;
@@ -70,10 +71,14 @@ namespace Room
         public void GetOculus(OculusController oculus, float time)
         {
             isControllable = false;
+            GameDirector.oculusOnThePlayer = true;
             oculus.transform.DOMove(oculusSeat.position, time);
         }
         public void DropOculus(OculusController oculus, float force)
         {
+            GameDirector.oculusOnThePlayer = false;
+
+            oculus.transform.position = oculusSeat.position;
             Rigidbody2D rigidbody2D = oculus.GetComponent<Rigidbody2D>();
             rigidbody2D.gravityScale = 1;
             rigidbody2D.AddForce(Vector2.up * force);

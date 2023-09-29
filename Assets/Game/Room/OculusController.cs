@@ -23,6 +23,11 @@ namespace Room
         private void Start()
         {
             Physics2D.IgnoreCollision(coll, player.GetComponent<Collider2D>());
+
+            if (GameDirector.oculusOnThePlayer)
+            {
+                DropOculus();
+            }
         }
         private void Update()
         {
