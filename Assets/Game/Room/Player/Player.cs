@@ -13,6 +13,7 @@ namespace Room
         private float horizontalSpeed;
         private Animator anim;
         private string currentState;
+        private Tween tween;
         public bool isControllable;
 
         private const string idleAnim = "Character2Idle";
@@ -45,6 +46,10 @@ namespace Room
         {
             MovePlayer();
         }
+        private void OnDisable()
+        {
+            tween.Kill();
+        }
 
         private void MovePlayer()
         {
@@ -72,7 +77,7 @@ namespace Room
         {
             isControllable = false;
             GameDirector.oculusOnThePlayer = true;
-            oculus.transform.DOMove(oculusSeat.position, time);
+            tween = oculus.transform.DOMove(oculusSeat.position, time);
         }
         public void DropOculus(OculusController oculus, float force)
         {
