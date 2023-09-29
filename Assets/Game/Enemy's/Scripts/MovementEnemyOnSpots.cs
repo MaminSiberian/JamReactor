@@ -9,20 +9,24 @@ public class MovementEnemyOnSpots : MonoBehaviour
     private int countSpot;
     [Header("Force")]
     public float force;
+    [Header("Timer")]    
     
-
     public float startMoveTime;
     private float waitTime;
     private bool temp = true;
+    private Rigidbody2D _rb;
 
     private void Start()
     {
         waitTime = startMoveTime;
         countSpot = 0;
+        _rb = GetComponent<Rigidbody2D>();
     }
     private void Update()
     {
-        
+        Vector2 lookDir = moveSpots[countSpot].position - transform.position;
+        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
+        _rb.rotation = angle;
         transform.position = Vector2.MoveTowards(transform.position, moveSpots[countSpot].position, speed * Time.deltaTime);
         if (Vector2.Distance(transform.position, moveSpots[countSpot].position) < 0.1f)
         {
