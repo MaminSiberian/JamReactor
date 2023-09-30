@@ -20,9 +20,7 @@ public class Hook : MonoBehaviour
 
     [Range(2, 10)][SerializeField] private float maxDistanseHook;
     [Range(1, 9)][SerializeField] private float minDistanseHook;
-    [SerializeField] private float radiusHook;
-    //[SerializeField] private LayerMask targetMask;
-    //[SerializeField] private LayerMask targetMask;
+    [Range(0f, 300f)][SerializeField] private float speedHook;
     [Range(0f, 3f)][SerializeField] private float timeThrowHook;
     [Range(0f, 3f)][SerializeField] private float timePullUpHook;
     [SerializeField] bool isCathc = false;
@@ -32,20 +30,17 @@ public class Hook : MonoBehaviour
     private Vector2 direction;
     private CatchingVariable whoCatching;
     private GameObject catchingTarget;
+    private float current, target;
     [SerializeField] private bool isCatchEnemy = false;
     [SerializeField] private float forcePush;
     [SerializeField] private float forcePushMe;
     public bool isFall;
     private Rigidbody2D _rb;
 
-<<<<<<< HEAD
     private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
     }
-=======
-
->>>>>>> 957d3669d180075b452304e6ddeed87cca06845f
     private void Update()
     {
 
@@ -56,11 +51,7 @@ public class Hook : MonoBehaviour
                 tryCatchSomthing = true;
                 StartCoroutine(ThrowHook());
             }
-<<<<<<< HEAD
             else if(!tryCatchSomthing && isCatchEnemy) 
-=======
-            else
->>>>>>> 957d3669d180075b452304e6ddeed87cca06845f
             {
                 StartCoroutine(ThrowEnemy());
             }
@@ -87,14 +78,10 @@ public class Hook : MonoBehaviour
                 catchingTarget.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             }
             yield break;
-        }   
+        }
 
     }
 
-    private void FixedUpdate()
-    {
-
-    }
 
     private void TurnInDirection()
     {
@@ -115,23 +102,42 @@ public class Hook : MonoBehaviour
         isCathc = false;
     }
 
+    public void CatchSomthing(CatchingVariable variable, GameObject catchingTarget)
+    {
+        isCathc = true;
+        Debug.Log(1);
+        MyEventManager.CameraShake(intensityShakeCamera, timeShakeCamera);
+        MyEventManager.CatchSomthing();
+        whoCatching = variable;
+        Debug.Log(whoCatching);
+        this.catchingTarget = catchingTarget;
+        if (variable == CatchingVariable.enemy)
+        {
+            var enemy = catchingTarget.GetComponent<ICanCatching>();
+            enemy.CatchOn();
+            Debug.Log(enemy);
+            isCatchEnemy = true;
+        }
+    }
+
+
+
+
+
     IEnumerator ThrowHook()
     {
         // Debug.Break();
-        //Debug.Break();
+
         var startPos = direction.normalized * minDistanseHook + (Vector2)transform.position;
         var endPos = direction.normalized * maxDistanseHook + (Vector2)transform.position;
         float current = 0;
         //StartCoroutine(MoveToTarget(startPos, endPos, timeThrowHook));
-        while (current < 1) 
+        while (current < 1)
         {
-            CheckColllision();
-            if (isCathc) break;
-                hook.position = Vector2.Lerp(startPos, endPos, current);
+            hook.position = Vector2.Lerp(startPos, endPos, current);
             current += Time.deltaTime / timeThrowHook;
             yield return null;
         }
-
         Debug.Log("hook on max");
         if (isCathc == false)
         {
@@ -139,15 +145,15 @@ public class Hook : MonoBehaviour
         }
         else
         {
-            if (whoCatching == CatchingVariable.enemy)
-            {
-                Debug.Log("Catch Enemy To Self");
-                StartCoroutine(PullUpEnemyToSelf());
-            }
-            else if (whoCatching == CatchingVariable.point)
+            if (whoCatching == CatchingVariable.point)
             {
                 Debug.Log("Catch to point");
                 StartCoroutine(PullUpSelfToPoint());
+            }
+            else if (whoCatching == CatchingVariable.enemy)
+            {
+                Debug.Log("Catch Enemy To Self");
+                StartCoroutine(PullUpEnemyToSelf());
             }
         }
         yield break;
@@ -184,10 +190,7 @@ public class Hook : MonoBehaviour
             hook.position = endPos;
             current += Time.deltaTime / timePullUpHook;
             if (Vector2.Distance(catchingTarget.transform.position, transform.position) < 0.1f)
-            {
                 transform.position = endPos;
-                hook.position = direction.normalized * minDistanseHook + (Vector2)transform.position;
-            }
             yield return null;
         }
         tryCatchSomthing = false;
@@ -218,7 +221,7 @@ public class Hook : MonoBehaviour
     }
 
 
-    IEnumerator CathcTargetInHook()
+    IEnumerator CathcTargetInHook() 
     {
         while (isCatchEnemy)
         {
@@ -241,7 +244,6 @@ public class Hook : MonoBehaviour
     //    }
     //    yield break;
     //}
-<<<<<<< HEAD
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
@@ -257,54 +259,6 @@ public class Hook : MonoBehaviour
         _rb.velocity = Vector2.zero;
     }
 
-=======
-
-    private void CheckColllision()
-    {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(hook.transform.position, radiusHook);
-        List<GameObject> targets = new List<GameObject>();
-        foreach (Collider2D collider in colliders)
-        {
-            if (collider.gameObject.GetComponent<ICanCatching>() != null)
-                targets.Add(collider.gameObject);
-        }
-        //bool isEnemyInList = false;
-
-        foreach (GameObject target in targets)
-        {
-            if (target.CompareTag("Enemy"))
-            {
-                Debug.Log("catchEnemy");
-                CatchSomthing(CatchingVariable.enemy, target);
-                break;
-            }
-            else if (target.CompareTag("PointToCatch"))
-            {
-                Debug.Log("catchPoint");
-                CatchSomthing(CatchingVariable.point, target);
-            }
-            
-        }
-    }
-
-
-    private void CatchSomthing(CatchingVariable variable, GameObject catchingTarget)
-    {
-        isCathc = true;
-        MyEventManager.CameraShake(intensityShakeCamera, timeShakeCamera);
-        MyEventManager.CatchSomthing();
-        whoCatching = variable;
-        Debug.Log(whoCatching);
-        this.catchingTarget = catchingTarget;
-        if (variable == CatchingVariable.enemy)
-        {
-            var enemy = catchingTarget.GetComponent<ICanCatching>();
-            enemy.CatchOn();
-            Debug.Log(enemy);
-            isCatchEnemy = true;
-        }
-    }
->>>>>>> 957d3669d180075b452304e6ddeed87cca06845f
 }
 
 
