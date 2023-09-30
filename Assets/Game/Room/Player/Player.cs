@@ -36,6 +36,8 @@ namespace Room
                 horizontalSpeed = Input.GetAxis("Horizontal");
                 Flip();
             }
+            else
+                horizontalSpeed = 0;
 
             if (Mathf.Abs(horizontalSpeed) >= 0.3)
                 PlayAnim(moveAnim);

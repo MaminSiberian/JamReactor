@@ -4,11 +4,17 @@ using NaughtyAttributes;
 
 public class GameDirector : MonoBehaviour
 {
+    [SerializeField] private RoomEvent _eventToHappen;
+    [SerializeField] private bool _oculusOnThePlayer;
+    [SerializeField] private bool _vaseIsBroken;
+    [SerializeField] private bool _TVIsBroken;
+
     public static GameDirector instance { get; private set; }
 
     public static bool oculusOnThePlayer;
 
-    public static RoomEventsEnum eventToHappen;
+    public static RoomEvent eventToHappen;
+    public static bool vaseIsBroken;
     public static bool TVIsBroken;
 
     private string roomScene = "Room";
@@ -25,8 +31,16 @@ public class GameDirector : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
     [Button]
-    public void BackToRoom(RoomEventsEnum eventToHappen = RoomEventsEnum.None)
+    public void BackToRoom()
     {
         SceneManager.LoadScene(roomScene);
+    }
+    [Button]
+    private void SetRoomConfig()
+    {
+        eventToHappen = _eventToHappen;
+        oculusOnThePlayer = _oculusOnThePlayer;
+        vaseIsBroken = _vaseIsBroken;
+        TVIsBroken = _TVIsBroken;
     }
 }
