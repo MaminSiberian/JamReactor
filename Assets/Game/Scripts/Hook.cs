@@ -60,7 +60,8 @@ public class Hook : MonoBehaviour
             Debug.Log("Throw Enemy");
             isCatchEnemy = false;
             isCathc = false;
-            catchingTarget.GetComponent<Rigidbody2D>().AddForce(direction * forcePush, ForceMode2D.Impulse); ;
+            catchingTarget.GetComponent<Rigidbody2D>().AddForce(direction * forcePush, ForceMode2D.Impulse); 
+            yield return null;
             yield break;
         }   
 
@@ -92,8 +93,7 @@ public class Hook : MonoBehaviour
 
     IEnumerator ThrowHook()
     {
-        // Debug.Break();
-        //Debug.Break();
+
         var startPos = direction.normalized * minDistanseHook + (Vector2)transform.position;
         var endPos = direction.normalized * maxDistanseHook + (Vector2)transform.position;
         float current = 0;
@@ -203,19 +203,6 @@ public class Hook : MonoBehaviour
         Debug.Log("Throw Enemy");
         yield break;
     }
-
-    //IEnumerator MoveToTarget(Vector2 startPos, Vector2 endPos , float time )
-    //{
-    //    float current = 0;
-    //    while (current < 1)
-    //    {
-    //        hook.position = Vector2.Lerp(startPos, endPos, current);
-    //        Debug.Log(hook.position);
-    //        current += Time.deltaTime / time;
-    //        yield return null;
-    //    }
-    //    yield break;
-    //}
 
     private void CheckColllision()
     {
