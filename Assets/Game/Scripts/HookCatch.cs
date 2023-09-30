@@ -12,8 +12,16 @@ public class HookCatch : MonoBehaviour
     {
         if (collision.GetComponent<ICanCatching>() != null)
         {
-            Debug.Log("catch");
-            hook.CatchSomthing(CatchingVariable.point, collision.gameObject);
+            if (collision.gameObject.CompareTag("PointToCatch"))
+            {
+                Debug.Log("catchPoint");
+                hook.CatchSomthing(CatchingVariable.point, collision.gameObject);
+            }
+            if (collision.gameObject.CompareTag("Enemy"))
+            {
+                Debug.Log("catchEnemy");
+                hook.CatchSomthing(CatchingVariable.enemy, collision.gameObject);
+            }
         }
     }
 }

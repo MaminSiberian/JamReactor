@@ -14,7 +14,7 @@ public class Hook : MonoBehaviour
 {
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Transform hook;
-    [SerializeField] private Transform hookPivot;
+
     [Range(2, 10)][SerializeField] private float maxDistanseHook;
     [Range(1, 9)][SerializeField] private float minDistanseHook;
     [Range(0f, 300f)][SerializeField] private float speedHook;
@@ -27,6 +27,7 @@ public class Hook : MonoBehaviour
     private CatchingVariable whoCatching;
     private GameObject catchingTarget;
     private float current, target;
+    private bool isCatchEnemy = false;
 
 
     private void Update()
@@ -72,14 +73,27 @@ public class Hook : MonoBehaviour
         }
         else
         {
-            Vector3 targetPos = catchingTarget.transform.position;
-            hook.position = targetPos;            
-            current = 0;
-            target = 1;
-            current = Mathf.MoveTowards(current, target, speedHook * Time.deltaTime);
-            transform.position = Vector2.Lerp(transform.position, targetPos, current);
-            if (Vector2.Distance(catchingTarget.transform.position, transform.position) < 0.1f)
-                transform.position = targetPos;    
+            if (whoCatching == CatchingVariable.point)
+            {
+                Vector3 targetPos = catchingTarget.transform.position;
+                hook.position = targetPos;
+                current = 0;
+                target = 1;
+                current = Mathf.MoveTowards(current, target, speedHook * Time.deltaTime);
+                transform.position = Vector2.Lerp(transform.position, targetPos, current);
+                if (Vector2.Distance(catchingTarget.transform.position, transform.position) < 0.1f)
+                    transform.position = targetPos;
+            }
+
+            //if (whoCatching == CatchingVariable.enemy)
+            //{
+            //   // catchingTarget.transform.position = hook.transform.position;
+            //    if (current == target)
+            //        target = 0;
+            //    current = Mathf.MoveTowards(current, target, speedHook * Time.deltaTime);
+            //    hook.position = Vector2.Lerp(direction.normalized * minDistanseHook + (Vector2)transform.position,
+            //    direction.normalized * maxDistanseHook + (Vector2)transform.position, current);
+            //}
         }
 
     }
@@ -98,6 +112,17 @@ public class Hook : MonoBehaviour
         MyEventManager.CameraShake(intensityShakeCamera, timeShakeCamera);
         MyEventManager.CatchSomthing();
         whoCatching = variable;
+        Debug.Log(whoCatching);
+        if (variable == CatchingVariable.enemy)
+        {
+            var enemy = catchingTarget.GetComponent<ICanCatching>();
+            enemy.CatchOn();
+            Debug.Log(enemy);
+            isCatchEnemy = true;
+
+        }
         this.catchingTarget = catchingTarget;
     }
+
+
 }
