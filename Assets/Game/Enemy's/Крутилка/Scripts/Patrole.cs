@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class Patrole : MonoBehaviour
 {
-    public float speed;
-    public float cooldown;
-    public float distance;
+    public float speed = 1f;
+    public float cooldown = 1f;
+    public float distance = 3f;
     private Vector2 randomPosition;
     private bool _isCathing;
     private float waitTime;
@@ -19,7 +19,7 @@ public class Patrole : MonoBehaviour
     }
     private void Update()
     {
-        if (!_isCathing)
+        if (!_enemyController._iscatch)
         {
             if (!_enemyController.GetIsAttack())
             {
@@ -46,7 +46,7 @@ public class Patrole : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(!_isCathing)
+        if (!_enemyController._iscatch)
         {
             if(!collision.gameObject.CompareTag("Player"))
             {
