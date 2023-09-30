@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class MovementEnemyOnSpots : MonoBehaviour
@@ -78,12 +79,13 @@ public class MovementEnemyOnSpots : MonoBehaviour
             _anim.SetTrigger("Attack");
             audioSource.PlayOneShot(clips[Random.Range(0, clips.Length - 1)]);
             var direction = collision.transform.position - transform.position;
-            collision.gameObject.GetComponent<MoveTest>().fall = true;
             collision.rigidbody.AddForce(direction * forcePush,
-                ForceMode2D.Impulse); ;
+                ForceMode2D.Impulse);
+            
             
         }
     }
+    
     
     
 }
