@@ -12,15 +12,18 @@ public class EnemyController : MonoBehaviour, ICanCatching
     private float angle;
     private bool isAttack;
     public bool _iscatch;
+    public bool isFall;
+    private Rigidbody2D _rb;
 
 
     private void Start()
     {
-        
+        isFall = false;
+        _rb = GetComponent<Rigidbody2D>();
     }
     private void Update()
     {
-        if (!_iscatch)
+        if (!_iscatch && !isFall)
         {
             _distance = Vector2.Distance(transform.position, player.transform.position);
             Vector2 direction = player.transform.position - transform.position;
@@ -39,6 +42,7 @@ public class EnemyController : MonoBehaviour, ICanCatching
             else
                 isAttack = false;
         }
+        
     }
     public bool GetIsAttack()
     {
@@ -52,5 +56,22 @@ public class EnemyController : MonoBehaviour, ICanCatching
     {
         _iscatch = false;
     }
-
+    public void ChangeFall(bool value)
+    {
+        isFall = value;
+        if (isFall)
+        {
+            _rb.bodyType = RigidbodyType2D.Dynamic;
+        }
+        else
+            _rb.bodyType = RigidbodyType2D.Kinematic;
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(isFall && collision.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+        }
+    }
 }
