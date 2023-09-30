@@ -21,14 +21,13 @@ public class Hook : MonoBehaviour
     [Range(2, 10)][SerializeField] private float maxDistanseHook;
     [Range(1, 9)][SerializeField] private float minDistanseHook;
     [SerializeField] private float radiusHook;
-    //[SerializeField] private LayerMask targetMask;
-    //[SerializeField] private LayerMask targetMask;
     [Range(0f, 3f)][SerializeField] private float timeThrowHook;
     [Range(0f, 3f)][SerializeField] private float timePullUpHook;
     [SerializeField] bool isCathc = false;
     [SerializeField] private bool tryCatchSomthing = false;
     [Range(0f, 5f)][SerializeField] private float intensityShakeCamera;
     [Range(0f, 5f)][SerializeField] private float timeShakeCamera;
+    private bool isHookReload = true;
     private Vector2 direction;
     private CatchingVariable whoCatching;
     private GameObject catchingTarget;
@@ -39,8 +38,9 @@ public class Hook : MonoBehaviour
     private void Update()
     {
 
-        if (Input.GetMouseButtonDown(0))
+        if ((Input.GetMouseButtonDown(0)) && (isHookReload))
         {
+            isHookReload = false;
             if ((!tryCatchSomthing) && (!isCatchEnemy))
             {
                 tryCatchSomthing = true;
@@ -84,12 +84,6 @@ public class Hook : MonoBehaviour
     }
 
 
-    private void ReloadHook()
-    {
-        tryCatchSomthing = false;
-        hook.localPosition = Vector2.up * minDistanseHook;
-        isCathc = false;///////////////////////////////
-    }
 
     IEnumerator ThrowHook()
     {
@@ -142,6 +136,7 @@ public class Hook : MonoBehaviour
         }
         tryCatchSomthing = false;
         isCathc = false;
+        isHookReload = true;
         Debug.Log("hook on min");
         yield break;
     }
@@ -167,6 +162,7 @@ public class Hook : MonoBehaviour
         }
         tryCatchSomthing = false;
         isCathc = false;
+        isHookReload = true;
         Debug.Log("PullUpToPoint");
         yield break;
     }
@@ -188,6 +184,7 @@ public class Hook : MonoBehaviour
         tryCatchSomthing = false;
         isCatchEnemy = true;
         StartCoroutine(CathcTargetInHook());
+        isHookReload = true;
         Debug.Log("hook on min");
         yield break;
     }
