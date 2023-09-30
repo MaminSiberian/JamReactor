@@ -13,19 +13,21 @@ public class GameDirector : MonoBehaviour
     [SerializeField] private bool _TVIsBroken;
     [SerializeField] private bool _windowIsBroken;
     [SerializeField] private bool _sofaIsBurning;
+    [SerializeField] private bool _roomIsBurning;
 
     public static GameDirector instance { get; private set; }
 
     public static bool oculusOnThePlayer;
 
     public static RoomEvent eventToHappen;
-    public static bool vaseIsBroken; // 1
-    public static bool catIsGone; // 2
-    public static bool TVIsBroken; // 3
-    public static bool windowIsBroken; // 4
-    public static bool sofaIsBurning; // 5
+    public static bool vaseIsBroken { get; private set; } // 1
+    public static bool catIsGone { get; private set; } // 2
+    public static bool TVIsBroken { get; private set; } // 3
+    public static bool windowIsBroken { get; private set; } // 4
+    public static bool sofaIsBurning { get; private set; } // 5
+    public static bool roomIsBurning { get; private set; } // 6
 
-    private string roomScene = "Room";
+    private static string roomScene = "Room";
 
     private void Awake()
     {
@@ -53,9 +55,10 @@ public class GameDirector : MonoBehaviour
         TVIsBroken = _TVIsBroken;
         windowIsBroken = _windowIsBroken;
         sofaIsBurning = _sofaIsBurning;
+        roomIsBurning = _roomIsBurning;
     }
     [Button]
-    public void PlayNextRoomEvent()
+    public static void PlayNextRoomEvent()
     {
         oculusOnThePlayer = true;
 
@@ -78,7 +81,12 @@ public class GameDirector : MonoBehaviour
         TVIsBroken = (int)eventToHappen > 3;
         windowIsBroken = (int)eventToHappen > 4;
         sofaIsBurning = (int)eventToHappen > 5;
+        roomIsBurning = (int)eventToHappen > 6;
 
         SceneManager.LoadScene(roomScene);
+    }
+    public static void PlayGame()
+    {
+        PlayNextRoomEvent(); // ПОМЕНЯТЬ ПОТОМ
     }
 }

@@ -18,7 +18,7 @@ namespace Room
 
         private const string idleAnim = "Idle";
         private const string moveAnim = "Moving";
-        private const string text = "Вы врезались в кота!";
+        private const string text = "Ты врезался в кота!";
         private Tween tween;
 
         private void Awake()

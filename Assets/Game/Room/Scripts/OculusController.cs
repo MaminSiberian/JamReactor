@@ -23,11 +23,17 @@ namespace Room
         }
         private void Start()
         {
+            if (GameDirector.eventToHappen == RoomEvent.Final)
+            {
+                player.transform.position = this.transform.position;
+                DropOculus();
+            }
+
             Physics2D.IgnoreCollision(coll, player.GetComponent<Collider2D>());
         }
         private void Update()
         {
-            if (Mathf.Abs(this.transform.position.x - player.transform.position.x) <= requiredDistanceToPlayer)
+            if (Mathf.Abs(this.transform.position.x - player.transform.position.x) <= requiredDistanceToPlayer && GameDirector.eventToHappen != RoomEvent.Final)
             {
                 helpWindow.SetActive(true);
                 if (Input.GetKeyDown(getKey))

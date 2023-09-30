@@ -79,7 +79,7 @@ namespace Room
         {
             isControllable = false;
             GameDirector.oculusOnThePlayer = true;
-            tween = oculus.transform.DOMove(oculusSeat.position, time);
+            tween = oculus.transform.DOMove(oculusSeat.position, time).OnKill(PlayGame);
         }
         public void DropOculus(OculusController oculus, float force)
         {
@@ -89,8 +89,12 @@ namespace Room
             Rigidbody2D rigidbody2D = oculus.GetComponent<Rigidbody2D>();
             rigidbody2D.gravityScale = 1;
             rigidbody2D.AddForce(Vector2.up * force);
-            rigidbody2D.AddForce(Vector2.left * force);
+            rigidbody2D.AddForce(Vector2.right * force);
             isControllable = true;
+        }
+        private void PlayGame()
+        {
+            GameDirector.PlayGame();
         }
     }
 

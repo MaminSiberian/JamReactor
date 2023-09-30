@@ -13,7 +13,7 @@ namespace Room
         [SerializeField] private OculusController oculus;
         [SerializeField] private AudioDirector audioDirector;
 
-        private const string text = "Упс! Вы нанесли вазе критический урон";
+        private const string text = "Упс! Ты нанес вазе критический урон";
 
         private void Start()
         {
