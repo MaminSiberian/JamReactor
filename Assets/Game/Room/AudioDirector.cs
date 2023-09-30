@@ -5,6 +5,7 @@ public class AudioDirector : MonoBehaviour
     [SerializeField] private AudioSource vaseSound;
     [SerializeField] private AudioSource TVEventSound;
     [SerializeField] private AudioSource catSound;
+    [SerializeField] private AudioSource crackSound;
 
     public void PlayVaseSound()
     {
@@ -17,5 +18,9 @@ public class AudioDirector : MonoBehaviour
     public void PlayCatSound()
     {
         catSound.Play();
+    }
+    public void PlayCrackSound()
+    {
+        crackSound.Play();
     }
 }

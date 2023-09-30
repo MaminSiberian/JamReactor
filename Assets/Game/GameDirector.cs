@@ -9,6 +9,7 @@ public class GameDirector : MonoBehaviour
     [SerializeField] private bool _vaseIsBroken;
     [SerializeField] private bool _catIsGone;
     [SerializeField] private bool _TVIsBroken;
+    [SerializeField] private bool _windowIsBroken;
 
     public static GameDirector instance { get; private set; }
 
@@ -18,6 +19,7 @@ public class GameDirector : MonoBehaviour
     public static bool vaseIsBroken;
     public static bool catIsGone;
     public static bool TVIsBroken;
+    public static bool windowIsBroken;
 
     private string roomScene = "Room";
 
@@ -45,5 +47,6 @@ public class GameDirector : MonoBehaviour
         vaseIsBroken = _vaseIsBroken;
         catIsGone = _catIsGone;
         TVIsBroken = _TVIsBroken;
+        windowIsBroken = _windowIsBroken;
     }
 }
