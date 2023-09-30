@@ -40,7 +40,9 @@ public class ShootingEnemy : MonoBehaviour
             var countAttack = UnityEngine.Random.Range(0, attackShots.Length - 1);
             GameObject prefab = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             Rigidbody2D _rb2d = prefab.GetComponent<Rigidbody2D>();
+            
             _rb2d.AddForce(firePoint.up * bulletForce * Time.deltaTime, ForceMode2D.Impulse);
+            Debug.Log(_rb2d.velocity);
             _as.PlayOneShot(attackShots[countAttack]);
         }
 

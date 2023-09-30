@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8533284914237277022}
   - component: {fileID: 2956756583093919178}
   - component: {fileID: 348191707822943225}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BulletTest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,7 +131,7 @@ Rigidbody2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1226803105567387107}
   m_BodyType: 0
-  m_Simulated: 1
+  m_Simulated: 0
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 0.0001
