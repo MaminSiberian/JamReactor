@@ -12,11 +12,15 @@ public class MoveTest : MonoBehaviour
     }
     private void Update()
     {
-        _rb.velocity = Vector3.zero;
-        var h = Input.GetAxis("Horizontal");
-        var v = Input.GetAxis("Vertical");
-        transform.Translate(new Vector2(h,v) * speed * Time.deltaTime);
+        
+        
             
         
+    }
+    private void FixedUpdate()
+    {
+        var h = Input.GetAxis("Horizontal");
+        var v = Input.GetAxis("Vertical");
+        _rb.AddForce(new Vector2(h, v) * speed * Time.deltaTime, ForceMode2D.Impulse);
     }
 }

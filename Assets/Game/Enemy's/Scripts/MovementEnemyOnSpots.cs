@@ -24,10 +24,12 @@ public class MovementEnemyOnSpots : MonoBehaviour
     }
     private void Update()
     {
+        
         Vector2 lookDir = moveSpots[countSpot].position - transform.position;
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
         _rb.rotation = angle;
         transform.position = Vector2.MoveTowards(transform.position, moveSpots[countSpot].position, speed * Time.deltaTime);
+        
         if (Vector2.Distance(transform.position, moveSpots[countSpot].position) < 0.1f)
         {
             if (waitTime <= 0)
@@ -65,10 +67,10 @@ public class MovementEnemyOnSpots : MonoBehaviour
         if(collision.collider.CompareTag("Player"))
         {
             Debug.Log("Player");
-            var direction = transform.position - collision.transform.position;
-            collision.rigidbody.AddForce(-direction * force * Time.deltaTime,
-                ForceMode2D.Impulse);
-            Debug.Log("off");
+            var direction = collision.transform.position - transform.position;
+            collision.rigidbody.AddForce(direction * force,
+                ForceMode2D.Impulse); ;
+            Debug.Log(collision.rigidbody.velocity);
         }
     }
     
