@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 159872740}
   - component: {fileID: 159872741}
   - component: {fileID: 159872742}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5966,7 +5966,7 @@ GameObject:
   - component: {fileID: 329805156}
   - component: {fileID: 329805159}
   - component: {fileID: 329805160}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6053,7 +6053,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 329805155}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.54, y: -1.01, z: 0.040149167}
+  m_LocalPosition: {x: -7.85, y: -1.01, z: 0.040149167}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6699,7 +6699,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 23
+    m_Bits: 2015
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -7734,7 +7734,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 929625630}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: OculusSeat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18197,7 +18197,7 @@ GameObject:
   - component: {fileID: 1324666173}
   - component: {fileID: 1324666177}
   - component: {fileID: 1324666176}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Oculus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23455,7 +23455,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1442550643}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.56, y: 0, z: 0}
+  m_LocalPosition: {x: -0.31, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

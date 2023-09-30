@@ -5,14 +5,14 @@ using NaughtyAttributes;
 public class GameDirector : MonoBehaviour
 {
     #region FOR_TESTING
-    /*[SerializeField] private RoomEvent _eventToHappen;
+    [SerializeField] private RoomEvent _eventToHappen;
     [SerializeField] private bool _oculusOnThePlayer;
     [SerializeField] private bool _vaseIsBroken;
     [SerializeField] private bool _catIsGone;
     [SerializeField] private bool _TVIsBroken;
     [SerializeField] private bool _windowIsBroken;
     [SerializeField] private bool _sofaIsBurning;
-    [SerializeField] private bool _roomIsBurning;*/
+    [SerializeField] private bool _roomIsBurning;
     #endregion
 
     public static GameDirector instance { get; private set; }
@@ -41,12 +41,12 @@ public class GameDirector : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
     #region FOR_TESTING
-    /*[Button]
+    [Button]
     private void RestartRoom()
     {
         SceneManager.LoadScene(roomScene);
-    }*/
-    /*[Button]
+    }
+    [Button]
     private void SetRoomConfig()
     {
         eventToHappen = _eventToHappen;
@@ -57,7 +57,7 @@ public class GameDirector : MonoBehaviour
         windowIsBroken = _windowIsBroken;
         sofaIsBurning = _sofaIsBurning;
         roomIsBurning = _roomIsBurning;
-    }*/
+    }
     #endregion
     [Button]
     public static void PlayNextRoomEvent()
