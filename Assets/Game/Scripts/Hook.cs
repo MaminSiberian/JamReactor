@@ -57,7 +57,7 @@ public class Hook : MonoBehaviour
 
             
 
-            else
+            else if ((!tryCatchSomthing) && (isCatchEnemy))
 
             {
                 StartCoroutine(ThrowEnemy());

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2502942084337359470}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 3831890530401515453}
   - component: {fileID: 7966922180085426794}
   - component: {fileID: 82524232126245315}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Enemy1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ Transform:
   m_Children:
   - {fileID: 2502942084337359470}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1507829514793049697
 Animator:
@@ -110,6 +110,7 @@ MonoBehaviour:
   visibleDistance: 4
   pivot: {fileID: 2502942084337359470}
   _iscatch: 0
+  isFall: 0
 --- !u!50 &5673592662298047387
 Rigidbody2D:
   serializedVersion: 4
@@ -154,7 +155,7 @@ MonoBehaviour:
   pushSource: {fileID: 7966922180085426794}
   pushFX: {fileID: 1967835574231978638, guid: 3e196c9e632c76841a71cb6e2dc6d010, type: 3}
   ec: {fileID: 7358237572523510016}
-  _anim: {fileID: 0}
+  _anim: {fileID: 1507829514793049697}
 --- !u!114 &3831890530401515453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,6 +314,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\u041C\u043E\u043D\u0441\u0442\u04401"
       objectReference: {fileID: 0}
+    - target: {fileID: -8653719598885068355, guid: d03abaa54471e69498d7ee1798ddbe77, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -8508832959432291146, guid: d03abaa54471e69498d7ee1798ddbe77, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -8373232436742993763, guid: d03abaa54471e69498d7ee1798ddbe77, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: d03abaa54471e69498d7ee1798ddbe77, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -356,6 +369,14 @@ PrefabInstance:
     - target: {fileID: -7552582706839291426, guid: d03abaa54471e69498d7ee1798ddbe77, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6757517157170357088, guid: d03abaa54471e69498d7ee1798ddbe77, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -4793857363042505152, guid: d03abaa54471e69498d7ee1798ddbe77, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

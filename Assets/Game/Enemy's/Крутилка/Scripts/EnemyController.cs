@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour, ICanCatching
 {
-    public GameObject player;
+    private GameObject player;
     public float speed;
     public float speedAngle;
     public float visibleDistance;
@@ -20,6 +20,7 @@ public class EnemyController : MonoBehaviour, ICanCatching
     {
         isFall = false;
         _rb = GetComponent<Rigidbody2D>();
+        player = GameObject.FindWithTag("Player");
     }
     private void Update()
     {
