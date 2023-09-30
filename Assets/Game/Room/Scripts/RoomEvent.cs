@@ -5,6 +5,7 @@ public enum RoomEvent
     Vase,
     Cat,
     TV,
-    
-
+    Sofa,
+    Fire,
+    Final
 }
