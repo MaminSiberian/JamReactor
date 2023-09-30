@@ -68,6 +68,7 @@ public class MovementEnemyOnSpots : MonoBehaviour
         {
             Debug.Log("Player");
             var direction = collision.transform.position - transform.position;
+            collision.gameObject.GetComponent<MoveTest>().fall = true;
             collision.rigidbody.AddForce(direction * force,
                 ForceMode2D.Impulse); ;
             Debug.Log(collision.rigidbody.velocity);
