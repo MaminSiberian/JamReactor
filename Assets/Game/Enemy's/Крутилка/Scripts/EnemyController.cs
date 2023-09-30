@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour, ICanCatching
 {
-    public GameObject player;
+    private GameObject player;
     public float speed;
     public float speedAngle;
     public float visibleDistance;
@@ -20,6 +20,7 @@ public class EnemyController : MonoBehaviour, ICanCatching
     {
         isFall = false;
         _rb = GetComponent<Rigidbody2D>();
+        player = GameObject.FindWithTag("Player");
     }
     private void Update()
     {
@@ -42,17 +43,17 @@ public class EnemyController : MonoBehaviour, ICanCatching
             else
                 isAttack = false;
         }
-        
+
     }
     public bool GetIsAttack()
     {
         return isAttack;
     }
-    public void CatchOn() 
+    public void CatchOn()
     {
         _iscatch = true;
     }
-    public void CatchOff() 
+    public void CatchOff()
     {
         _iscatch = false;
     }
@@ -68,7 +69,7 @@ public class EnemyController : MonoBehaviour, ICanCatching
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(isFall && collision.gameObject.CompareTag("Enemy"))
+        if (isFall && collision.gameObject.CompareTag("Enemy"))
         {
             Destroy(collision.gameObject);
             Destroy(gameObject);
