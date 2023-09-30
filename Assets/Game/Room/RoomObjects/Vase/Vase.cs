@@ -47,7 +47,6 @@ namespace Room
         private void StopVaseEvent()
         {
             EventText.OnAnimEndedEvent -= StopVaseEvent;
-            GameDirector.vaseIsBroken = true;
             player.isControllable = true;
         }
 

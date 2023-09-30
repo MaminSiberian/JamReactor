@@ -36,7 +36,6 @@ namespace Room
         private void StopWindowEvent()
         {
             EventText.OnAnimEndedEvent -= StopWindowEvent;
-            GameDirector.TVIsBroken = true;
             player.isControllable = true;
         }
     }

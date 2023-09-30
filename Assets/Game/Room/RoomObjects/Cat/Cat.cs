@@ -19,6 +19,7 @@ namespace Room
         private const string idleAnim = "Idle";
         private const string moveAnim = "Moving";
         private const string text = "Вы врезались в кота!";
+        private Tween tween;
 
         private void Awake()
         {
@@ -34,6 +35,10 @@ namespace Room
             if (GameDirector.eventToHappen == RoomEvent.Cat && !GameDirector.catIsGone)
                 StartCatEvent();
         }
+        private void OnDisable()
+        {
+            tween.Kill();
+        }
         private void StartCatEvent()
         {
             player.transform.position = new Vector2(this.transform.position.x, player.transform.position.y);
@@ -42,7 +47,7 @@ namespace Room
 
             sprite.flipX = true;
             anim.Play(moveAnim);
-            this.transform.DOMove(outPoint.position, walkTime);
+            tween = this.transform.DOMove(outPoint.position, walkTime);
 
             EventText.PlayEventAnim(text);
             EventText.OnAnimEndedEvent += StopCatEvent;
@@ -51,7 +56,6 @@ namespace Room
         private void StopCatEvent()
         {
             EventText.OnAnimEndedEvent -= StopCatEvent;
-            GameDirector.catIsGone = true;
             player.isControllable = true;
         }
     }
