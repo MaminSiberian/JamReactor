@@ -10,6 +10,7 @@ namespace Room
         [SerializeField] private Transform oculusSeat;
 
         private Rigidbody2D rb;
+        private AudioSource stepSound;
         private float horizontalSpeed;
         private Animator anim;
         private string currentState;
@@ -23,6 +24,7 @@ namespace Room
         {
             rb = GetComponent<Rigidbody2D>();
             anim = sprite.GetComponent<Animator>();
+            stepSound = GetComponent<AudioSource>();
         }
 
         private void Start()
@@ -40,7 +42,10 @@ namespace Room
                 horizontalSpeed = 0;
 
             if (Mathf.Abs(horizontalSpeed) >= 0.3)
+            {
                 PlayAnim(moveAnim);
+                PlayStepSound();
+            }
             else
                 PlayAnim(idleAnim);
         }
@@ -95,6 +100,14 @@ namespace Room
         private void PlayGame()
         {
             GameDirector.PlayGame();
+        }
+        private void PlayStepSound()
+        {
+            if (!stepSound.isPlaying)
+            {
+                stepSound.pitch = Random.Range(0.9f, 1.1f);
+                stepSound.Play();
+            }
         }
     }
 
