@@ -10,19 +10,19 @@ public class HookCatch : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<ICanCatching>() != null)
-        {
-            if (collision.gameObject.CompareTag("PointToCatch"))
-            {
-                Debug.Log("catchPoint");
-                hook.CatchSomthing(CatchingVariable.point, collision.gameObject);
-            }
-            if (collision.gameObject.CompareTag("Enemy"))
-            {
-                Debug.Log("catchEnemy");
-                hook.CatchSomthing(CatchingVariable.enemy, collision.gameObject);
-            }
-        }
+        //if (collision.GetComponent<ICanCatching>() != null)
+        //{
+        //    if (collision.gameObject.CompareTag("PointToCatch"))
+        //    {
+        //        Debug.Log("catchPoint");
+        //        hook.CatchSomthing(CatchingVariable.point, collision.gameObject);
+        //    }
+        //    if (collision.gameObject.CompareTag("Enemy"))
+        //    {
+        //        Debug.Log("catchEnemy");
+        //        hook.CatchSomthing(CatchingVariable.enemy, collision.gameObject);
+        //    }
+        //}
     }
 
 
