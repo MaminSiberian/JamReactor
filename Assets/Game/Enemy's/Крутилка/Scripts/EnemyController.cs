@@ -14,7 +14,7 @@ public class EnemyController : MonoBehaviour, ICanCatching
     public bool _iscatch;
     public bool isFall;
     private Rigidbody2D _rb;
-
+    
 
     private void Start()
     {

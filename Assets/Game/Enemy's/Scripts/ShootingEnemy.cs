@@ -6,9 +6,9 @@ public class ShootingEnemy : MonoBehaviour
     [Header("Bullet Properties")]
     public GameObject bulletPrefab;
     public Transform firePoint;
-    public float bulletForce;
     [Header("Reload Properties")]
     public float cooldownFireInSeconds;
+    public float visibleDistance;
     public bool isAttack { get; private set; }
     [Header("Rotate on Enemy Properties")]
     public float speedRotation;
@@ -18,28 +18,33 @@ public class ShootingEnemy : MonoBehaviour
     private Rigidbody2D _rb;
     private float timeFire;
     private AudioSource _as;
-    private bool _isCatch;
+    private EnemyController _enemyController;
+    private float _distance;
+    private GameObject player;
+    private Animator _anim;
 
     private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
         timeFire = cooldownFireInSeconds;
         _as = GetComponent<AudioSource>();
+        _enemyController = GetComponent<EnemyController>();
+        player = GameObject.FindWithTag("Player");
+        _anim = GetComponent<Animator>();
     }
 
-    public void Rotate(Collider2D collision)
+    public void Rotate()
     {
-        Vector2 lookDir = collision.transform.position - transform.position;
+        Vector2 lookDir = player.transform.position - transform.position;
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
         _rb.rotation = Mathf.LerpAngle(_rb.rotation, angle, Time.deltaTime * speedRotation);
     }
     public void Shoot()
     {
         var countAttack = UnityEngine.Random.Range(0, attackShots.Length - 1);
-            GameObject prefab = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-            Rigidbody2D _rb2d = prefab.GetComponent<Rigidbody2D>();
-            _rb2d.AddForce(firePoint.up * bulletForce * Time.deltaTime, ForceMode2D.Impulse);
+        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         _as.PlayOneShot(attackShots[countAttack]);
+        _anim.SetTrigger("Attack");
          
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -48,24 +53,37 @@ public class ShootingEnemy : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             
-            isAttack = true;
+            if(!_enemyController._iscatch)
+                isAttack = true;
         }
     }
-    private void OnTriggerStay2D(Collider2D collision)
+    private void Update()
     {
-        if (collision.gameObject.CompareTag("Player")) 
+        _distance = Vector2.Distance(transform.position, player.transform.position);
+        Vector2 direction = player.transform.position - transform.position;
+        direction.Normalize();
+        if (_distance < visibleDistance)
         {
-            Rotate(collision);
-            if(timeFire <= 0) 
+            isAttack = true;
+            if (!_enemyController._iscatch)
             {
-                Shoot();
-                timeFire = cooldownFireInSeconds;
+                Rotate();
+                if (timeFire <= 0)
+                {
+                    Shoot();
+                    timeFire = cooldownFireInSeconds;
+                }
+                else
+                    timeFire -= Time.deltaTime;
             }
-            else
-                timeFire -= Time.deltaTime;
         }
+        else
+        {
+            isAttack = false;
 
+        }
     }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
