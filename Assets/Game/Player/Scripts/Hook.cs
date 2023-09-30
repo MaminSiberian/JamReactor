@@ -15,6 +15,10 @@ public enum CatchingVariable
 
 public class Hook : MonoBehaviour
 {
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip sountThrowHook;
+    [SerializeField] private AudioClip soundCatchHook;
+    [SerializeField] private AudioClip soundPullUpHook;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Transform hook;
 
@@ -35,10 +39,14 @@ public class Hook : MonoBehaviour
     [SerializeField] private float forcePush;
     [SerializeField] private float forcePushMe;
     private Rigidbody2D _rb;
+    private float pitch;
 
 
     private void Start()
     {
+
+        audioSource = GetComponent<AudioSource>();
+        pitch = audioSource.pitch;
         _rb = GetComponent<Rigidbody2D>();
     }
 
@@ -62,30 +70,40 @@ public class Hook : MonoBehaviour
         else
             if (!tryCatchSomthing)
             TurnInDirection();
-
-        IEnumerator ThrowEnemy()
-        {
-            Debug.Log("Throw Enemy");
-            isCatchEnemy = false;
-            isCathc = false;
-            var enemy = catchingTarget.GetComponent<EnemyController>();
-            enemy.ChangeFall(true);
-            _rb.AddForce(-direction * forcePushMe * Time.deltaTime, ForceMode2D.Impulse);
-            var rbEnemy = catchingTarget.GetComponent<Rigidbody2D>();
-            rbEnemy.AddForce(direction * forcePush, ForceMode2D.Impulse);
-            yield return new WaitForSeconds(0.4f);
-            _rb.velocity = Vector2.zero;
-            if(catchingTarget != null)
-            {
-                enemy.ChangeFall(false);
-                enemy._iscatch = false;
-                rbEnemy.velocity = Vector2.zero;
-            }
-            isHookReload = true;
-            yield break;
-        }   
+    }
+    private void PlaySound(AudioClip clip)
+    {
+        var rand = Random.Range(-0.2f, 0.2f);
+        audioSource.pitch = pitch + rand;
+        Debug.Log("Sound");
+        audioSource.PlayOneShot(clip);
 
     }
+
+    IEnumerator ThrowEnemy()
+    {
+        Debug.Log("Throw Enemy");
+        //PlaySound(sountThrowHook);
+        isCatchEnemy = false;
+        isCathc = false;
+        var enemy = catchingTarget.GetComponent<EnemyController>();
+        enemy.ChangeFall(true);
+        _rb.AddForce(-direction * forcePushMe * Time.deltaTime, ForceMode2D.Impulse);
+        var rbEnemy = catchingTarget.GetComponent<Rigidbody2D>();
+        rbEnemy.AddForce(direction * forcePush, ForceMode2D.Impulse);
+        yield return new WaitForSeconds(0.4f);
+        _rb.velocity = Vector2.zero;
+        if (catchingTarget != null)
+        {
+            enemy.ChangeFall(false);
+            enemy._iscatch = false;
+            rbEnemy.velocity = Vector2.zero;
+        }
+        isHookReload = true;
+        yield break;
+    }
+
+
 
     private void FixedUpdate()
     {
@@ -105,16 +123,16 @@ public class Hook : MonoBehaviour
 
     IEnumerator ThrowHook()
     {
-
+        PlaySound(sountThrowHook);
         var startPos = direction.normalized * minDistanseHook + (Vector2)transform.position;
         var endPos = direction.normalized * maxDistanseHook + (Vector2)transform.position;
         float current = 0;
         //StartCoroutine(MoveToTarget(startPos, endPos, timeThrowHook));
-        while (current < 1) 
+        while (current < 1)
         {
             CheckColllision();
             if (isCathc) break;
-                hook.position = Vector2.Lerp(startPos, endPos, current);
+            hook.position = Vector2.Lerp(startPos, endPos, current);
             current += Time.deltaTime / timeThrowHook;
             yield return null;
         }
@@ -142,6 +160,7 @@ public class Hook : MonoBehaviour
 
     IEnumerator PullUpHook()
     {
+        PlaySound(soundPullUpHook);
         var startPos = direction.normalized * maxDistanseHook + (Vector2)transform.position;
         var endPos = direction.normalized * minDistanseHook + (Vector2)transform.position;
         //StartCoroutine(MoveToTarget(startPos, endPos, timePullUpHook));
@@ -155,6 +174,7 @@ public class Hook : MonoBehaviour
         tryCatchSomthing = false;
         isCathc = false;
         isHookReload = true;
+        hook.position = direction.normalized * minDistanseHook + (Vector2)transform.position;
         Debug.Log("hook on min");
         yield break;
     }
@@ -162,10 +182,10 @@ public class Hook : MonoBehaviour
 
     IEnumerator PullUpSelfToPoint()
     {
+        PlaySound(soundPullUpHook);
         var startPos = transform.position;
         var endPos = catchingTarget.transform.position;
         float current = 0;
-        Debug.Log(catchingTarget.transform.position);
         while (current < 1)
         {
             transform.position = Vector2.Lerp(startPos, endPos, current);
@@ -174,10 +194,10 @@ public class Hook : MonoBehaviour
             if (Vector2.Distance(catchingTarget.transform.position, transform.position) < 0.1f)
             {
                 transform.position = endPos;
-                hook.position = direction.normalized * minDistanseHook + (Vector2)transform.position;
             }
             yield return null;
         }
+        hook.position = direction.normalized * minDistanseHook + (Vector2)transform.position;
         tryCatchSomthing = false;
         isCathc = false;
         isHookReload = true;
@@ -187,6 +207,7 @@ public class Hook : MonoBehaviour
 
     IEnumerator PullUpEnemyToSelf()
     {
+        PlaySound(soundPullUpHook);
         var startPos = direction.normalized * maxDistanseHook + (Vector2)transform.position;
         var endPos = direction.normalized * minDistanseHook + (Vector2)transform.position;
         //StartCoroutine(MoveToTarget(startPos, endPos, timePullUpHook));
@@ -226,7 +247,7 @@ public class Hook : MonoBehaviour
             StopAllCoroutines();
             StartCoroutine(Timer());
         }
-        
+
     }
     IEnumerator Timer()
     {
@@ -265,7 +286,7 @@ public class Hook : MonoBehaviour
                 Debug.Log("catchPoint");
                 CatchSomthing(CatchingVariable.point, target);
             }
-            
+
         }
     }
 
