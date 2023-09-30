@@ -34,14 +34,7 @@ public class Hook : MonoBehaviour
     private GameObject catchingTarget;
     [SerializeField] private bool isCatchEnemy = false;
     [SerializeField] private float forcePush;
-    [SerializeField] private float forcePushMe;
-    private Rigidbody2D _rb;
 
-
-    private void Start()
-    {
-        _rb = GetComponent<Rigidbody2D>();
-    }
 
     private void Update()
     {
@@ -53,15 +46,10 @@ public class Hook : MonoBehaviour
                 tryCatchSomthing = true;
                 StartCoroutine(ThrowHook());
             }
-
-            
-
-            else if ((!tryCatchSomthing) && (isCatchEnemy))
-
+            else
             {
                 StartCoroutine(ThrowEnemy());
             }
-            _rb.velocity = Vector3.zero;
         }
         else
             if (!tryCatchSomthing)
@@ -72,17 +60,8 @@ public class Hook : MonoBehaviour
             Debug.Log("Throw Enemy");
             isCatchEnemy = false;
             isCathc = false;
-            catchingTarget.GetComponent<EnemyController>().ChangeFall(true);
-            _rb.AddForce(-direction * forcePushMe * Time.deltaTime, ForceMode2D.Impulse);
-            catchingTarget.GetComponent<Rigidbody2D>().AddForce(direction * forcePush, ForceMode2D.Impulse);
-            yield return new WaitForSeconds(0.5f);
-            _rb.velocity = Vector2.zero;
-            if(catchingTarget != null)
-            {
-                catchingTarget.GetComponent<EnemyController>().ChangeFall(false);
-                catchingTarget.GetComponent<EnemyController>()._iscatch = false;
-                catchingTarget.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            }
+            catchingTarget.GetComponent<Rigidbody2D>().AddForce(direction * forcePush, ForceMode2D.Impulse); 
+            yield return null;
             yield break;
         }   
 
@@ -109,13 +88,12 @@ public class Hook : MonoBehaviour
     {
         tryCatchSomthing = false;
         hook.localPosition = Vector2.up * minDistanseHook;
-        isCathc = false;
+        isCathc = false;///////////////////////////////
     }
 
     IEnumerator ThrowHook()
     {
-        // Debug.Break();
-        //Debug.Break();
+
         var startPos = direction.normalized * minDistanseHook + (Vector2)transform.position;
         var endPos = direction.normalized * maxDistanseHook + (Vector2)transform.position;
         float current = 0;
@@ -226,28 +204,6 @@ public class Hook : MonoBehaviour
         yield break;
     }
 
- 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            StopAllCoroutines();
-            StartCoroutine(Timer());
-        }
-        
-    }
-    IEnumerator Timer()
-    {
-        yield return new WaitForSeconds(0.5f);
-        _rb.velocity = Vector2.zero;
-        tryCatchSomthing = false;
-        catchingTarget = null;
-        isCathc = false;
-        hook.position = direction.normalized * minDistanseHook + (Vector2)transform.position;
-    }
-
-
-
     private void CheckColllision()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(hook.transform.position, radiusHook);
@@ -293,11 +249,6 @@ public class Hook : MonoBehaviour
             isCatchEnemy = true;
         }
     }
-    public void SetTrySomething(bool value)
-    {
-        tryCatchSomthing = value;
-    }
-
 }
 
 
