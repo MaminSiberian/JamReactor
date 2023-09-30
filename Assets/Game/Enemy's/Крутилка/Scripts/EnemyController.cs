@@ -10,6 +10,7 @@ public class EnemyController : MonoBehaviour
 
     private float _distance;
     private float angle;
+    private bool isAttack;
 
     private void Start()
     {
@@ -24,13 +25,19 @@ public class EnemyController : MonoBehaviour
         angle += speedAngle * Time.deltaTime;
 
         pivot.rotation = Quaternion.Euler(0, 0, angle);
-        if(_distance < visibleDistance)
+        if (_distance < visibleDistance)
         {
+            isAttack = true;
             transform.position = Vector2.MoveTowards(transform.position,
                 player.transform.position,
                 speed * Time.deltaTime);
-            //transform.rotation = Quaternion.Euler(Vector3.forward * angle);
         }
+        else
+            isAttack = false;
+    }
+    public bool GetIsAttack()
+    {
+        return isAttack;
     }
     
 }
