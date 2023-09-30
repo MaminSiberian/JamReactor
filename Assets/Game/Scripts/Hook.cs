@@ -34,7 +34,6 @@ public class Hook : MonoBehaviour
     [SerializeField] private bool isCatchEnemy = false;
     [SerializeField] private float forcePush;
     [SerializeField] private float forcePushMe;
-    public bool isFall;
     private Rigidbody2D _rb;
 
 
@@ -69,17 +68,20 @@ public class Hook : MonoBehaviour
             Debug.Log("Throw Enemy");
             isCatchEnemy = false;
             isCathc = false;
-            catchingTarget.GetComponent<EnemyController>().ChangeFall(true);
+            var enemy = catchingTarget.GetComponent<EnemyController>();
+            enemy.ChangeFall(true);
             _rb.AddForce(-direction * forcePushMe * Time.deltaTime, ForceMode2D.Impulse);
-            catchingTarget.GetComponent<Rigidbody2D>().AddForce(direction * forcePush, ForceMode2D.Impulse);
+            var rbEnemy = catchingTarget.GetComponent<Rigidbody2D>();
+            rbEnemy.AddForce(direction * forcePush, ForceMode2D.Impulse);
             yield return new WaitForSeconds(0.4f);
             _rb.velocity = Vector2.zero;
             if(catchingTarget != null)
             {
-                catchingTarget.GetComponent<EnemyController>().ChangeFall(false);
-                catchingTarget.GetComponent<EnemyController>()._iscatch = false;
-                catchingTarget.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                enemy.ChangeFall(false);
+                enemy._iscatch = false;
+                rbEnemy.velocity = Vector2.zero;
             }
+            isHookReload = true;
             yield break;
         }   
 
@@ -100,17 +102,6 @@ public class Hook : MonoBehaviour
 
         transform.up = direction;
     }
-
-
-//<<<<<<< Updated upstream
-//=======
-//    private void ReloadHook()
-//    {
-//        tryCatchSomthing = false;
-//        hook.localPosition = Vector2.up * minDistanseHook;
-//        isCathc = false;
-//    }
-//>>>>>>> Stashed changes
 
     IEnumerator ThrowHook()
     {
@@ -228,20 +219,6 @@ public class Hook : MonoBehaviour
         yield break;
     }
 
-
-    //IEnumerator MoveToTarget(Vector2 startPos, Vector2 endPos , float time )
-    //{
-    //    float current = 0;
-    //    while (current < 1)
-    //    {
-    //        hook.position = Vector2.Lerp(startPos, endPos, current);
-    //        Debug.Log(hook.position);
-    //        current += Time.deltaTime / time;
-    //        yield return null;
-    //    }
-    //    yield break;
-    //}
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
@@ -255,7 +232,14 @@ public class Hook : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         _rb.velocity = Vector2.zero;
+        tryCatchSomthing = false;
+        catchingTarget = null;
+        isCathc = false;
+        isHookReload = true;
+        hook.position = direction.normalized * minDistanseHook + (Vector2)transform.position;
     }
+
+
 
     private void CheckColllision()
     {

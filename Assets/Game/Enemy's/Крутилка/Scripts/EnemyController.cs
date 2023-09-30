@@ -44,17 +44,17 @@ public class EnemyController : MonoBehaviour, ICanCatching
             else
                 isAttack = false;
         }
-        
+
     }
     public bool GetIsAttack()
     {
         return isAttack;
     }
-    public void CatchOn() 
+    public void CatchOn()
     {
         _iscatch = true;
     }
-    public void CatchOff() 
+    public void CatchOff()
     {
         _iscatch = false;
     }
@@ -70,7 +70,7 @@ public class EnemyController : MonoBehaviour, ICanCatching
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(isFall && collision.gameObject.CompareTag("Enemy"))
+        if (isFall && collision.gameObject.CompareTag("Enemy"))
         {
             Destroy(collision.gameObject);
             Destroy(gameObject);
