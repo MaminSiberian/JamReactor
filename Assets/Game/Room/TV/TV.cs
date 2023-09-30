@@ -9,6 +9,7 @@ namespace Room
         [SerializeField] private GameObject brokenTV;
 
         [SerializeField] private Player player;
+        [SerializeField] private OculusController oculus;
         [SerializeField] private AudioDirector audioDirector;
 
         private const string text = "TV have been defeated!";
@@ -26,6 +27,9 @@ namespace Room
 
         private void StartTVEvent()
         {
+            player.transform.position = new Vector2(this.transform.position.x, player.transform.position.y);
+            if (GameDirector.oculusOnThePlayer) oculus.DropOculus();
+
             okTV.SetActive(false);
             brokenTV.SetActive(true);
 
@@ -40,7 +44,5 @@ namespace Room
             GameDirector.TVIsBroken = true;
             player.isControllable = true;
         }
-
-
     }
 }

@@ -10,6 +10,7 @@ namespace Room
         [SerializeField] private SpriteRenderer brokenVase;
 
         [SerializeField] private Player player;
+        [SerializeField] private OculusController oculus;
         [SerializeField] private AudioDirector audioDirector;
 
         private const string text = "Oops! You have applied critical damage on vase";
@@ -29,6 +30,9 @@ namespace Room
         }
         private void StartVaseEvent()
         {
+            player.transform.position = new Vector2(this.transform.position.x, player.transform.position.y);
+            if (GameDirector.oculusOnThePlayer) oculus.DropOculus();
+
             flower.enabled = false;
             vase.enabled = false;
 
