@@ -1,4 +1,4 @@
-using DG.Tweening;
+﻿using DG.Tweening;
 using UnityEngine;
 
 namespace Room
@@ -12,7 +12,7 @@ namespace Room
         [SerializeField] private OculusController oculus;
         [SerializeField] private AudioDirector audioDirector;
 
-        private const string text = "TV have been defeated!";
+        private const string text = "Телевизор был побежден!";
 
         private void Start()
         {

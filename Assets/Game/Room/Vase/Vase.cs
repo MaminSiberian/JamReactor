@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Room
 {
@@ -13,7 +13,7 @@ namespace Room
         [SerializeField] private OculusController oculus;
         [SerializeField] private AudioDirector audioDirector;
 
-        private const string text = "Oops! You have applied critical damage on vase";
+        private const string text = "Упс! Вы нанесли вазе критический урон";
 
         private void Start()
         {

@@ -7,6 +7,7 @@ public class GameDirector : MonoBehaviour
     [SerializeField] private RoomEvent _eventToHappen;
     [SerializeField] private bool _oculusOnThePlayer;
     [SerializeField] private bool _vaseIsBroken;
+    [SerializeField] private bool _catIsGone;
     [SerializeField] private bool _TVIsBroken;
 
     public static GameDirector instance { get; private set; }
@@ -15,6 +16,7 @@ public class GameDirector : MonoBehaviour
 
     public static RoomEvent eventToHappen;
     public static bool vaseIsBroken;
+    public static bool catIsGone;
     public static bool TVIsBroken;
 
     private string roomScene = "Room";
@@ -41,6 +43,7 @@ public class GameDirector : MonoBehaviour
         eventToHappen = _eventToHappen;
         oculusOnThePlayer = _oculusOnThePlayer;
         vaseIsBroken = _vaseIsBroken;
+        catIsGone = _catIsGone;
         TVIsBroken = _TVIsBroken;
     }
 }

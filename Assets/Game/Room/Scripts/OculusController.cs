@@ -19,6 +19,7 @@ namespace Room
         {
             rb = GetComponent<Rigidbody2D>();
             coll = GetComponent<Collider2D>();
+
         }
         private void Start()
         {
