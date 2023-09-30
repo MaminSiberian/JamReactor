@@ -10,9 +10,9 @@ public class MovementEnemyOnCircle : MonoBehaviour, ICanCatching
     public float startMoveTime;
     private float waitTime;
     private Vector2 randomPoint;
-    private ShootingEnemy _se;
     private Rigidbody2D _rb;
     private bool _isCatching;
+    private Animator _anim;
 
     private void Start()
     {
@@ -20,16 +20,17 @@ public class MovementEnemyOnCircle : MonoBehaviour, ICanCatching
         var y = Random.Range(-radius, radius);
         randomPoint = new Vector2(x, y);
         waitTime = startMoveTime;
-        _se = GetComponent<ShootingEnemy>();
         _rb = GetComponent<Rigidbody2D>();
         _isCatching = false;
+        _anim = GetComponent<Animator>();
     }
     private void Update()
     {
         if (!_isCatching)
         {
-            if (!_se.isAttack)
+            if (!_anim.GetBool("IsAttack"))
             {
+
                 Vector2 lookDir = randomPoint - _rb.position;
                 float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
                 _rb.rotation = angle;
@@ -49,6 +50,7 @@ public class MovementEnemyOnCircle : MonoBehaviour, ICanCatching
                         waitTime -= Time.deltaTime;
 
                     }
+
                 }
             }
         }
