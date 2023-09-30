@@ -3426,7 +3426,7 @@ MonoBehaviour:
   - {fileID: 1800297462}
   - {fileID: 1086708068}
   - {fileID: 1362186389}
-  force: 500
+  forcePush: 0
   startMoveTime: 0.67
 --- !u!50 &672342436
 Rigidbody2D:
@@ -3469,14 +3469,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1226803105567387107, guid: 9d40702ef4cb1314eba77dc6f988055b, type: 3}
   firePoint: {fileID: 0}
-  startTimeFire: 2
-  isAttack: 0
-  speedRotation: 0
-  attackShot: {fileID: 0}
-  whoIsPlayer:
-    serializedVersion: 2
-    m_Bits: 0
   bulletForce: 10
+  cooldownFireInSeconds: 0
+  speedRotation: 0
+  attackShots: []
 --- !u!58 &672342438
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -4952,14 +4948,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1226803105567387107, guid: 9d40702ef4cb1314eba77dc6f988055b, type: 3}
   firePoint: {fileID: 1077375391}
-  startTimeFire: 1
-  isAttack: 0
-  speedRotation: 7
-  attackShot: {fileID: 8300000, guid: 31f8309448a86674398d7e8498de170f, type: 3}
-  whoIsPlayer:
-    serializedVersion: 2
-    m_Bits: 0
   bulletForce: 0.05
+  cooldownFireInSeconds: 1
+  speedRotation: 7
+  attackShots:
+  - {fileID: 8300000, guid: 31f8309448a86674398d7e8498de170f, type: 3}
 --- !u!58 &1274633973
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -5040,7 +5033,7 @@ MonoBehaviour:
   - {fileID: 1800297462}
   - {fileID: 1086708068}
   - {fileID: 1362186389}
-  force: 2.24
+  forcePush: 10
   startMoveTime: 0.67
 --- !u!114 &1274633976
 MonoBehaviour:

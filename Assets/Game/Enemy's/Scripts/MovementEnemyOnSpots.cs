@@ -8,7 +8,7 @@ public class MovementEnemyOnSpots : MonoBehaviour
     public Transform[] moveSpots;
     private int countSpot;
     [Header("Force")]
-    public float force;
+    public float forcePush;
     [Header("Timer")]    
     
     public float startMoveTime;
@@ -69,7 +69,7 @@ public class MovementEnemyOnSpots : MonoBehaviour
             Debug.Log("Player");
             var direction = collision.transform.position - transform.position;
             collision.gameObject.GetComponent<MoveTest>().fall = true;
-            collision.rigidbody.AddForce(direction * force,
+            collision.rigidbody.AddForce(direction * forcePush,
                 ForceMode2D.Impulse); ;
             Debug.Log(collision.rigidbody.velocity);
         }

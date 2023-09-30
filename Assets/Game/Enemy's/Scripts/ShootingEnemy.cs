@@ -1,26 +1,29 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
 public class ShootingEnemy : MonoBehaviour
 {
+    [Header("Bullet Properties")]
     public GameObject bulletPrefab;
     public Transform firePoint;
-    public float startTimeFire;
-    public bool isAttack;
-    public float speedRotation;
-    public AudioClip attackShot;
-    public LayerMask whoIsPlayer;
-
     public float bulletForce;
+    [Header("Reload Properties")]
+    public float cooldownFireInSeconds;
+    public bool isAttack { get; private set; }
+    [Header("Rotate on Enemy Properties")]
+    public float speedRotation;
+    [Header("Audio Properties")]
+    public AudioClip[] attackShots;
+
     private Rigidbody2D _rb;
     private float timeFire;
     private AudioSource _as;
+    private bool _isCatch;
 
     private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
-        timeFire = startTimeFire;
+        timeFire = cooldownFireInSeconds;
         _as = GetComponent<AudioSource>();
     }
 
@@ -32,10 +35,11 @@ public class ShootingEnemy : MonoBehaviour
     }
     public void Shoot()
     {
+        var countAttack = UnityEngine.Random.Range(0, attackShots.Length - 1);
             GameObject prefab = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             Rigidbody2D _rb2d = prefab.GetComponent<Rigidbody2D>();
             _rb2d.AddForce(firePoint.up * bulletForce * Time.deltaTime, ForceMode2D.Impulse);
-            _as.PlayOneShot(attackShot);
+        _as.PlayOneShot(attackShots[countAttack]);
          
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -55,7 +59,7 @@ public class ShootingEnemy : MonoBehaviour
             if(timeFire <= 0) 
             {
                 Shoot();
-                timeFire = startTimeFire;
+                timeFire = cooldownFireInSeconds;
             }
             else
                 timeFire -= Time.deltaTime;
