@@ -13,7 +13,7 @@ public class HookCatch : MonoBehaviour
         if (collision.GetComponent<ICanCatching>() != null)
         {
             Debug.Log("catch");
-            hook.CatchSomthing(CatchingVariable.point, collision.transform.position);
+            hook.CatchSomthing(CatchingVariable.point, collision.gameObject);
         }
     }
 }
