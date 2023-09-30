@@ -37,14 +37,12 @@ public class Hook : MonoBehaviour
     public bool isFall;
     private Rigidbody2D _rb;
 
-<<<<<<< HEAD
+
     private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
     }
-=======
 
->>>>>>> 957d3669d180075b452304e6ddeed87cca06845f
     private void Update()
     {
 
@@ -56,11 +54,7 @@ public class Hook : MonoBehaviour
                 tryCatchSomthing = true;
                 StartCoroutine(ThrowHook());
             }
-<<<<<<< HEAD
-            else if(!tryCatchSomthing && isCatchEnemy) 
-=======
             else
->>>>>>> 957d3669d180075b452304e6ddeed87cca06845f
             {
                 StartCoroutine(ThrowEnemy());
             }
@@ -75,10 +69,6 @@ public class Hook : MonoBehaviour
             Debug.Log("Throw Enemy");
             isCatchEnemy = false;
             isCathc = false;
-<<<<<<< HEAD
-            catchingTarget.GetComponent<Rigidbody2D>().AddForce(direction * forcePush, ForceMode2D.Impulse); 
-            yield return null;
-=======
             catchingTarget.GetComponent<EnemyController>().ChangeFall(true);
             _rb.AddForce(-direction * forcePushMe * Time.deltaTime, ForceMode2D.Impulse);
             catchingTarget.GetComponent<Rigidbody2D>().AddForce(direction * forcePush, ForceMode2D.Impulse);
@@ -90,7 +80,6 @@ public class Hook : MonoBehaviour
                 catchingTarget.GetComponent<EnemyController>()._iscatch = false;
                 catchingTarget.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             }
->>>>>>> ac5784250df0fb80dcce9a120265b9aaee768dc7
             yield break;
         }   
 
@@ -113,15 +102,15 @@ public class Hook : MonoBehaviour
     }
 
 
-<<<<<<< Updated upstream
-=======
-    private void ReloadHook()
-    {
-        tryCatchSomthing = false;
-        hook.localPosition = Vector2.up * minDistanseHook;
-        isCathc = false;
-    }
->>>>>>> Stashed changes
+//<<<<<<< Updated upstream
+//=======
+//    private void ReloadHook()
+//    {
+//        tryCatchSomthing = false;
+//        hook.localPosition = Vector2.up * minDistanseHook;
+//        isCathc = false;
+//    }
+//>>>>>>> Stashed changes
 
     IEnumerator ThrowHook()
     {
@@ -239,8 +228,7 @@ public class Hook : MonoBehaviour
         yield break;
     }
 
-<<<<<<< HEAD
-=======
+
     //IEnumerator MoveToTarget(Vector2 startPos, Vector2 endPos , float time )
     //{
     //    float current = 0;
@@ -253,7 +241,7 @@ public class Hook : MonoBehaviour
     //    }
     //    yield break;
     //}
-<<<<<<< HEAD
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
@@ -269,9 +257,6 @@ public class Hook : MonoBehaviour
         _rb.velocity = Vector2.zero;
     }
 
-=======
-
->>>>>>> ac5784250df0fb80dcce9a120265b9aaee768dc7
     private void CheckColllision()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(hook.transform.position, radiusHook);
@@ -317,7 +302,6 @@ public class Hook : MonoBehaviour
             isCatchEnemy = true;
         }
     }
->>>>>>> 957d3669d180075b452304e6ddeed87cca06845f
 }
 
 
