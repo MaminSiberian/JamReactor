@@ -13,6 +13,9 @@ public class MovementEnemyOnSpots : MonoBehaviour
     
     public float startMoveTime;
     public bool isRotate;
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip[] clips;
     private float waitTime;
     private bool temp = true;
     private Rigidbody2D _rb;
@@ -73,6 +76,7 @@ public class MovementEnemyOnSpots : MonoBehaviour
         if(collision.collider.CompareTag("Player"))
         {
             _anim.SetTrigger("Attack");
+            audioSource.PlayOneShot(clips[Random.Range(0, clips.Length - 1)]);
             var direction = collision.transform.position - transform.position;
             collision.gameObject.GetComponent<MoveTest>().fall = true;
             collision.rigidbody.AddForce(direction * forcePush,

@@ -10013,6 +10013,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6331568330836147116, guid: 495798ff86d915b4e878141b79750ee7, type: 3}
+      propertyPath: moveSpots.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6331568330836147116, guid: 495798ff86d915b4e878141b79750ee7, type: 3}
       propertyPath: moveSpots.Array.data[0]
       value: 
       objectReference: {fileID: 1917846727}
