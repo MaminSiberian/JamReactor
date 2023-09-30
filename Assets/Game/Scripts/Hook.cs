@@ -38,14 +38,12 @@ public class Hook : MonoBehaviour
     public bool isFall;
     private Rigidbody2D _rb;
 
-<<<<<<< HEAD
+
     private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
     }
-=======
 
->>>>>>> 957d3669d180075b452304e6ddeed87cca06845f
     private void Update()
     {
 
@@ -56,11 +54,11 @@ public class Hook : MonoBehaviour
                 tryCatchSomthing = true;
                 StartCoroutine(ThrowHook());
             }
-<<<<<<< HEAD
-            else if(!tryCatchSomthing && isCatchEnemy) 
-=======
+
+            
+
             else
->>>>>>> 957d3669d180075b452304e6ddeed87cca06845f
+
             {
                 StartCoroutine(ThrowEnemy());
             }
@@ -229,19 +227,7 @@ public class Hook : MonoBehaviour
         yield break;
     }
 
-    //IEnumerator MoveToTarget(Vector2 startPos, Vector2 endPos , float time )
-    //{
-    //    float current = 0;
-    //    while (current < 1)
-    //    {
-    //        hook.position = Vector2.Lerp(startPos, endPos, current);
-    //        Debug.Log(hook.position);
-    //        current += Time.deltaTime / time;
-    //        yield return null;
-    //    }
-    //    yield break;
-    //}
-<<<<<<< HEAD
+ 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
@@ -257,7 +243,7 @@ public class Hook : MonoBehaviour
         _rb.velocity = Vector2.zero;
     }
 
-=======
+
 
     private void CheckColllision()
     {
@@ -304,7 +290,7 @@ public class Hook : MonoBehaviour
             isCatchEnemy = true;
         }
     }
->>>>>>> 957d3669d180075b452304e6ddeed87cca06845f
+
 }
 
 
