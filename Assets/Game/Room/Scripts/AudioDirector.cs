@@ -6,6 +6,7 @@ public class AudioDirector : MonoBehaviour
     [SerializeField] private AudioSource TVEventSound;
     [SerializeField] private AudioSource catSound;
     [SerializeField] private AudioSource crackSound;
+    [SerializeField] private AudioSource oculusSound;
 
     public void PlayVaseSound()
     {
@@ -22,5 +23,9 @@ public class AudioDirector : MonoBehaviour
     public void PlayCrackSound()
     {
         crackSound.Play();
+    }
+    public void PlayOculusSound()
+    {
+        oculusSound.Play();
     }
 }

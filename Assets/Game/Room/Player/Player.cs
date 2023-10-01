@@ -8,6 +8,7 @@ namespace Room
         [SerializeField] private float playerSpeed;
         [SerializeField] private SpriteRenderer sprite;
         [SerializeField] private Transform oculusSeat;
+        [SerializeField] private AudioDirector audioDirector;
 
         private Rigidbody2D rb;
         private AudioSource stepSound;
@@ -82,6 +83,7 @@ namespace Room
         }
         public void GetOculus(OculusController oculus, float time)
         {
+            audioDirector.PlayOculusSound();
             isControllable = false;
             GameDirector.oculusOnThePlayer = true;
             tween = oculus.transform.DOMove(oculusSeat.position, time).OnKill(PlayGame);
