@@ -50,3 +50,6 @@ TagManager:
   - name: New Layer 2
     uniqueID: 3240235375
     locked: 0
+  - name: Wall
+    uniqueID: 858862131
+    locked: 0
