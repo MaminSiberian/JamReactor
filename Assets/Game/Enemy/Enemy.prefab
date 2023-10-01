@@ -237,6 +237,7 @@ MonoBehaviour:
   _iscatch: 0
   isFall: 0
   isOn: 1
+  boomDeadParticles: {fileID: 8899195158609672108, guid: 9277e545b6612b04d88b0ae010c6d8c7, type: 3}
 --- !u!114 &4094503014083796257
 MonoBehaviour:
   m_ObjectHideFlags: 0
