@@ -60,30 +60,42 @@ public class Hook : MonoBehaviour
 
     private void Update()
     {
-        if (!isDeath)
+        if (Time.timeScale != 0)
         {
-
-            if ((Input.GetMouseButtonDown(0)) && (isHookReload))
+            if (Input.GetKeyDown(KeyCode.R))
             {
-                isHookReload = false;
-                Invoke("ReloadHook", timeReloadHook);
-                Invoke("ReloadHook", timeReloadHook * 2);
-                if ((!tryCatchSomthing) && (!isCatchEnemy))
-                {
-                    tryCatchSomthing = true;
-                    StartCoroutine(ThrowHook());
-                }
-                else if (!tryCatchSomthing && isCatchEnemy)
-                {
-                    if ((catchingTarget != null) && (catchingTarget.gameObject.CompareTag("Enemy")))
-                        StartCoroutine(ThrowEnemy());
-                }
-                _rb.velocity = Vector3.zero;
+                Restartlavel();
             }
-            else
-                if (!tryCatchSomthing)
-                TurnInDirection();
+            if (!isDeath)
+            {
+
+                if ((Input.GetMouseButtonDown(0)) && (isHookReload))
+                {
+                    isHookReload = false;
+                    Invoke("ReloadHook", timeReloadHook);
+                    Invoke("ReloadHook", timeReloadHook * 2);
+                    if ((!tryCatchSomthing) && (!isCatchEnemy))
+                    {
+                        tryCatchSomthing = true;
+                        StartCoroutine(ThrowHook());
+                    }
+                    else if (!tryCatchSomthing && isCatchEnemy)
+                    {
+                        if ((catchingTarget != null) && (catchingTarget.gameObject.CompareTag("Enemy")))
+                            StartCoroutine(ThrowEnemy());
+                    }
+                    _rb.velocity = Vector3.zero;
+                }
+                else
+                    if (!tryCatchSomthing)
+                    TurnInDirection();
+            }
         }
+    }
+
+    private void Restartlavel()
+    {
+        LoadScene();
     }
 
     private void ReloadHook()
@@ -263,14 +275,14 @@ public class Hook : MonoBehaviour
     IEnumerator CathcTargetInHook()
     {
         if (!isDeath)
-        while (isCatchEnemy)
-        {
-            if ((catchingTarget != null) && (catchingTarget.gameObject.CompareTag("Enemy")))
+            while (isCatchEnemy)
             {
-                catchingTarget.transform.position = hook.transform.position;
+                if ((catchingTarget != null) && (catchingTarget.gameObject.CompareTag("Enemy")))
+                {
+                    catchingTarget.transform.position = hook.transform.position;
+                }
+                yield return null;
             }
-            yield return null;
-        }
         Debug.Log("Throw Enemy");
         yield break;
     }
