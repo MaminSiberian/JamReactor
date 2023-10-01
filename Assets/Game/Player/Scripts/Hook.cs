@@ -48,6 +48,7 @@ public class Hook : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         pitch = audioSource.pitch;
         _rb = GetComponent<Rigidbody2D>();
+        mainCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
     }
 
     private void Update()
