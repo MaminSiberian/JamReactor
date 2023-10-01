@@ -416,6 +416,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 109837846310585778, guid: 0b5f6cc7a6b4b9f419e83a3c6e4ffb25, type: 3}
+      propertyPath: speed
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 187917776899060549, guid: 0b5f6cc7a6b4b9f419e83a3c6e4ffb25, type: 3}
       propertyPath: Loop
       value: 1
@@ -427,6 +431,38 @@ PrefabInstance:
     - target: {fileID: 1196527729396494416, guid: 0b5f6cc7a6b4b9f419e83a3c6e4ffb25, type: 3}
       propertyPath: m_Name
       value: Level
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017927897316209500, guid: 0b5f6cc7a6b4b9f419e83a3c6e4ffb25, type: 3}
+      propertyPath: speed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017927897316209500, guid: 0b5f6cc7a6b4b9f419e83a3c6e4ffb25, type: 3}
+      propertyPath: visibleDistance
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2813422633109188877, guid: 0b5f6cc7a6b4b9f419e83a3c6e4ffb25, type: 3}
+      propertyPath: speed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3707141420855352301, guid: 0b5f6cc7a6b4b9f419e83a3c6e4ffb25, type: 3}
+      propertyPath: speed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583359520065047151, guid: 0b5f6cc7a6b4b9f419e83a3c6e4ffb25, type: 3}
+      propertyPath: speed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745262428054741217, guid: 0b5f6cc7a6b4b9f419e83a3c6e4ffb25, type: 3}
+      propertyPath: speed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4884364468037158820, guid: 0b5f6cc7a6b4b9f419e83a3c6e4ffb25, type: 3}
+      propertyPath: speed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4884364468037158820, guid: 0b5f6cc7a6b4b9f419e83a3c6e4ffb25, type: 3}
+      propertyPath: visibleDistance
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5060709196365925471, guid: 0b5f6cc7a6b4b9f419e83a3c6e4ffb25, type: 3}
       propertyPath: bgMusic.Array.size
@@ -444,6 +480,26 @@ PrefabInstance:
       propertyPath: bgMusic.Array.data[2]
       value: 
       objectReference: {fileID: 8300000, guid: 8d21b7d7a3f1b384c96d6e7c2960925b, type: 3}
+    - target: {fileID: 5325204456346118188, guid: 0b5f6cc7a6b4b9f419e83a3c6e4ffb25, type: 3}
+      propertyPath: speed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434815612422454664, guid: 0b5f6cc7a6b4b9f419e83a3c6e4ffb25, type: 3}
+      propertyPath: speed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434815612422454664, guid: 0b5f6cc7a6b4b9f419e83a3c6e4ffb25, type: 3}
+      propertyPath: visibleDistance
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528383122818298236, guid: 0b5f6cc7a6b4b9f419e83a3c6e4ffb25, type: 3}
+      propertyPath: speed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528383122818298236, guid: 0b5f6cc7a6b4b9f419e83a3c6e4ffb25, type: 3}
+      propertyPath: visibleDistance
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7927734460794728338, guid: 0b5f6cc7a6b4b9f419e83a3c6e4ffb25, type: 3}
       propertyPath: m_RootOrder
       value: 1
