@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 //using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 //using static UnityEngine.GraphicsBuffer;
@@ -56,6 +57,7 @@ public class Hook : MonoBehaviour
         pitch = audioSource.pitch;
         _rb = GetComponent<Rigidbody2D>();
         mainCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
+
     }
 
     private void Update()
@@ -327,9 +329,11 @@ public class Hook : MonoBehaviour
         palyerGFX.SetActive(false);
         hook.gameObject.SetActive(false);
         transform.position = particels.transform.position;
+        
         Invoke("LoadScene", timeToRestartlave);
     }
 
+    
     private void LoadScene()
     {
         SceneManager.LoadScene(lavelID);
