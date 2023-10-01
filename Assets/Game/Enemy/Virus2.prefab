@@ -68,7 +68,7 @@ Transform:
   m_Children:
   - {fileID: 6636377652799434731}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &6593098660933428248
 Animator:
@@ -281,7 +281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ad3f54404cd30b44bd15db256b9ae02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forcePush: 4
+  forcePush: 0
   pushClip: {fileID: 8300000, guid: 162b98129836f0f4daaa6bcd782e0d0d, type: 3}
   pushSource: {fileID: 7578546740706843553}
   pushFX: {fileID: 1967835574231978638, guid: b4c85bddcc221234aa7873761d36c12e, type: 3}

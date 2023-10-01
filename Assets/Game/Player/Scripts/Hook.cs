@@ -1,12 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq.Expressions;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
-using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
-using static UnityEngine.GraphicsBuffer;
+using Random = UnityEngine.Random;
+//using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
+//using static UnityEngine.GraphicsBuffer;
 
 public enum CatchingVariable
 {
@@ -16,7 +15,7 @@ public enum CatchingVariable
 
 public class Hook : MonoBehaviour
 {
-     private int lavelID;
+    private int lavelID;
     [SerializeField] private float timeToRestartlave;
 
     [SerializeField] private AudioSource audioSource;
@@ -47,10 +46,11 @@ public class Hook : MonoBehaviour
     private Rigidbody2D _rb;
     private float pitch;
     private float timeReloadHook;
+    private bool isDeath = false;
 
     private void Start()
     {
-        lavelID = SceneManager.GetActiveScene().buildIndex;        
+        lavelID = SceneManager.GetActiveScene().buildIndex;
         timeReloadHook = timeThrowHook + timePullUpHook + 0.05f;
         audioSource = GetComponent<AudioSource>();
         pitch = audioSource.pitch;
@@ -60,27 +60,30 @@ public class Hook : MonoBehaviour
 
     private void Update()
     {
-
-        if ((Input.GetMouseButtonDown(0)) && (isHookReload))
+        if (!isDeath)
         {
-            isHookReload = false;
-            Invoke("ReloadHook", timeReloadHook);
-            Invoke("ReloadHook", timeReloadHook * 2);
-            if ((!tryCatchSomthing) && (!isCatchEnemy))
+
+            if ((Input.GetMouseButtonDown(0)) && (isHookReload))
             {
-                tryCatchSomthing = true;
-                StartCoroutine(ThrowHook());
+                isHookReload = false;
+                Invoke("ReloadHook", timeReloadHook);
+                Invoke("ReloadHook", timeReloadHook * 2);
+                if ((!tryCatchSomthing) && (!isCatchEnemy))
+                {
+                    tryCatchSomthing = true;
+                    StartCoroutine(ThrowHook());
+                }
+                else if (!tryCatchSomthing && isCatchEnemy)
+                {
+                    if ((catchingTarget != null) && (catchingTarget.gameObject.CompareTag("Enemy")))
+                        StartCoroutine(ThrowEnemy());
+                }
+                _rb.velocity = Vector3.zero;
             }
-            else if (!tryCatchSomthing && isCatchEnemy)
-            {
-                if ((catchingTarget != null) && (catchingTarget.gameObject.CompareTag("Enemy")))
-                    StartCoroutine(ThrowEnemy());
-            }
-            _rb.velocity = Vector3.zero;
+            else
+                if (!tryCatchSomthing)
+                TurnInDirection();
         }
-        else
-            if (!tryCatchSomthing)
-            TurnInDirection();
     }
 
     private void ReloadHook()
@@ -94,6 +97,7 @@ public class Hook : MonoBehaviour
         //isCatchEnemy = false;
         //hook.position = direction.normalized * minDistanseHook + (Vector2)transform.position;
     }
+
     private void PlaySound(AudioClip clip)
     {
         var rand = Random.Range(-0.2f, 0.2f);
@@ -258,6 +262,7 @@ public class Hook : MonoBehaviour
 
     IEnumerator CathcTargetInHook()
     {
+        if (!isDeath)
         while (isCatchEnemy)
         {
             if ((catchingTarget != null) && (catchingTarget.gameObject.CompareTag("Enemy")))
@@ -274,16 +279,17 @@ public class Hook : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            StartCoroutine(Death());
+            Death();
         }
         if (collision.gameObject.CompareTag("Thorn"))
         {
-            StartCoroutine(Death());
+            Death();
         }
 
     }
     private IEnumerator Timer()
     {
+
         yield return new WaitForSeconds(0.5f);
         _rb.velocity = Vector2.zero;
         tryCatchSomthing = false;
@@ -296,22 +302,25 @@ public class Hook : MonoBehaviour
     }
 
 
-    private IEnumerator Death()
+    private void Death()
     {
+        isDeath = true;
         StopAllCoroutines();
+        isCathc = false;
+        isCatchEnemy = false;
+        tryCatchSomthing = false;
         var particels = Instantiate(particleDeath, transform.position, transform.rotation);
         particels.SetActive(true);
         gameObject.GetComponent<Collider2D>().enabled = false;
         palyerGFX.SetActive(false);
         hook.gameObject.SetActive(false);
         transform.position = particels.transform.position;
-        yield return new WaitForSeconds(timeToRestartlave);
-        SceneManager.LoadScene(lavelID);
+        Invoke("LoadScene", timeToRestartlave);
     }
 
-    private object WaitForSeconds(object timeToRestartlave)
+    private void LoadScene()
     {
-        throw new System.NotImplementedException();
+        SceneManager.LoadScene(lavelID);
     }
 
     private void CheckColllision()
