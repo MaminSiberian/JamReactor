@@ -105,7 +105,7 @@ namespace Room
         }
         private void PlayStepSound()
         {
-            if (!stepSound.isPlaying)
+            if (!stepSound.isPlaying && Time.timeScale != 0)
             {
                 stepSound.pitch = Random.Range(0.9f, 1.1f);
                 stepSound.Play();
