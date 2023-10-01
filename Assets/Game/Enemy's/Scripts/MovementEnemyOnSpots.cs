@@ -26,7 +26,7 @@ public class MovementEnemyOnSpots : MonoBehaviour
         waitTime = startMoveTime;
         countSpot = 0;
         _rb = GetComponent<Rigidbody2D>();
-        transform.position = moveSpots[0].position;
+       // transform.position = moveSpots[0].position;
     }
     private void Update()
     {
