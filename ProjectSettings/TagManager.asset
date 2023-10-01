@@ -3,21 +3,24 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
+  - PointToCatch
+  - Thorn
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Weapon
+  - Bullet
+  - Hook
+  - Enemy
+  - PointToCatch
+  - Thorn
+  - Wall
   - 
   - 
   - 
@@ -40,4 +43,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: New Layer 1
+    uniqueID: 4113650007
+    locked: 0
+  - name: New Layer 2
+    uniqueID: 3240235375
     locked: 0
