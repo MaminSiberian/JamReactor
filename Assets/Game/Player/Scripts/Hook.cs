@@ -215,11 +215,14 @@ public class Hook : MonoBehaviour
         float current = 0;
         while (current < 1)
         {
-
-            hook.position = Vector2.Lerp(startPos, endPos, current);
-            catchingTarget.transform.position = hook.transform.position;
-            current += Time.deltaTime / timePullUpHook;
-            yield return null;
+            if (catchingTarget)
+            {
+                hook.position = Vector2.Lerp(startPos, endPos, current);
+                catchingTarget.transform.position = hook.transform.position;
+                current += Time.deltaTime / timePullUpHook;
+                yield return null;
+            }
+            else yield return null;
         }
         tryCatchSomthing = false;
         isCatchEnemy = true;

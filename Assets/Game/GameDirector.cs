@@ -89,6 +89,6 @@ public class GameDirector : MonoBehaviour
     }
     public static void PlayGame()
     {
-        SceneManager.LoadScene("TwoScene");
+        SceneManager.LoadScene("TwoLevel");
     }
 }

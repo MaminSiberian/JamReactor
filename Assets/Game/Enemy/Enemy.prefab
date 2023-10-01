@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 5381380227561932037}
   - component: {fileID: 8131495877942468463}
   - component: {fileID: 8866670881396541364}
-  - component: {fileID: 6795082932415561027}
-  - component: {fileID: 8699122990961663976}
   - component: {fileID: 909183046035766556}
+  - component: {fileID: 4094503014083796257}
+  - component: {fileID: 2215441528959211728}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Enemy
@@ -218,39 +218,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &6795082932415561027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1902801794762515017}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f7ec885ef553ae46bd6d6de1629c476, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
-  cooldown: 1
-  distance: 4
---- !u!114 &8699122990961663976
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1902801794762515017}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 681bfeb1df9074946812d7edab272161, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  forcePush: 4
-  pushClip: {fileID: 8300000, guid: 162b98129836f0f4daaa6bcd782e0d0d, type: 3}
-  pushSource: {fileID: 8866670881396541364}
-  pushFX: {fileID: 1967835574231978638, guid: b4c85bddcc221234aa7873761d36c12e, type: 3}
-  ec: {fileID: 909183046035766556}
-  _anim: {fileID: 1038173375818947793}
 --- !u!114 &909183046035766556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,6 +237,39 @@ MonoBehaviour:
   _iscatch: 0
   isFall: 0
   isOn: 1
+--- !u!114 &4094503014083796257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902801794762515017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d379bcd786400234ebb6edae1660a987, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1.5
+  cooldown: 1
+  distance: 3
+--- !u!114 &2215441528959211728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902801794762515017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ad3f54404cd30b44bd15db256b9ae02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forcePush: 4
+  pushClip: {fileID: 8300000, guid: 162b98129836f0f4daaa6bcd782e0d0d, type: 3}
+  pushSource: {fileID: 8866670881396541364}
+  pushFX: {fileID: 1967835574231978638, guid: b4c85bddcc221234aa7873761d36c12e, type: 3}
+  ec: {fileID: 909183046035766556}
+  _anim: {fileID: 1038173375818947793}
 --- !u!1 &4172031408087866550
 GameObject:
   m_ObjectHideFlags: 0
