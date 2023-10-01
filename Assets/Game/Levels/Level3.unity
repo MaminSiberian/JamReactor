@@ -633,6 +633,10 @@ PrefabInstance:
       propertyPath: boomDeadParticles
       value: 
       objectReference: {fileID: 8899195158609672108, guid: 9277e545b6612b04d88b0ae010c6d8c7, type: 3}
+    - target: {fileID: 5584403958879141893, guid: 2e5a162e544e187408ebac04349bbd73, type: 3}
+      propertyPath: speed
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5619519742777673657, guid: 2e5a162e544e187408ebac04349bbd73, type: 3}
       propertyPath: m_Color.b
       value: 0.07450981
