@@ -576,7 +576,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 16816630280538361, guid: 096e39a0763dd2b4f93d01b47dea95c4, type: 3}
       propertyPath: orthographic size
-      value: 8
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 16816630280538361, guid: 096e39a0763dd2b4f93d01b47dea95c4, type: 3}
       propertyPath: m_CullingMask.m_Bits
@@ -596,7 +596,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5969757765117046791, guid: 096e39a0763dd2b4f93d01b47dea95c4, type: 3}
       propertyPath: m_Lens.OrthographicSize
-      value: 8
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 7036402703261100408, guid: 096e39a0763dd2b4f93d01b47dea95c4, type: 3}
       propertyPath: m_RootOrder
@@ -1013,6 +1013,10 @@ PrefabInstance:
     - target: {fileID: 2291620480061408845, guid: 433db555e745d954481e4bdc26836c0a, type: 3}
       propertyPath: m_Layer
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2432959408554703083, guid: 433db555e745d954481e4bdc26836c0a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2905065619509509396, guid: 433db555e745d954481e4bdc26836c0a, type: 3}
       propertyPath: m_Layer

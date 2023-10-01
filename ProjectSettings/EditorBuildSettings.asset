@@ -13,7 +13,7 @@ EditorBuildSettings:
     guid: b4de67cee8672a74f9d504ca76c8e5e9
   - enabled: 1
     path: Assets/Game/Levels/Level2.unity
-    guid: df485b20e6f174a4986c43c575667e83
+    guid: aea561f8e7e09214ba2c555995e74347
   - enabled: 1
     path: Assets/Game/Levels/Level3.unity
     guid: 04824b678be98f648992f97b0110ec2b
@@ -28,5 +28,5 @@ EditorBuildSettings:
     guid: 02203cfd898f8c743adcf95896f4104b
   - enabled: 1
     path: Assets/Game/Levels/Level7.unity
-    guid: aea561f8e7e09214ba2c555995e74347
+    guid: df485b20e6f174a4986c43c575667e83
   m_configObjects: {}
