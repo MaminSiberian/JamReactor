@@ -242,13 +242,13 @@ public class Hook : MonoBehaviour
 
     IEnumerator CathcTargetInHook()
     {
-        while (isCatchEnemy) 
+        while (isCatchEnemy)
         {
             if ((catchingTarget != null) && (catchingTarget.gameObject.CompareTag("Enemy")))
             {
                 catchingTarget.transform.position = hook.transform.position;
-                yield return null;
             }
+            yield return null;
         }
         Debug.Log("Throw Enemy");
         yield break;
@@ -276,8 +276,8 @@ public class Hook : MonoBehaviour
         catchingTarget = null;
         isCathc = false;
         isHookReload = true;
-        isCatchEnemy = false;        
-        hook.position = direction.normalized * minDistanseHook + (Vector2)transform.position;       
+        isCatchEnemy = false;
+        hook.position = direction.normalized * minDistanseHook + (Vector2)transform.position;
     }
 
 
