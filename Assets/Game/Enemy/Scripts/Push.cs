@@ -22,8 +22,6 @@ public class Push : MonoBehaviour
                 collision.rigidbody.AddForce(direction * forcePush, ForceMode2D.Impulse);
                 var player = collision.gameObject.GetComponent<Hook>();
                 ec._iscatch = false;
-                player.StartPullUpHook();
-
             }
         }
     }

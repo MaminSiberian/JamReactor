@@ -53,10 +53,6 @@ public class Hook : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            StartPullUpHook();
-        }
 
         if ((Input.GetMouseButtonDown(0)) && (isHookReload))
         {
@@ -246,9 +242,9 @@ public class Hook : MonoBehaviour
 
     IEnumerator CathcTargetInHook()
     {
-        while (isCatchEnemy)
+        while (isCatchEnemy) 
         {
-            if (catchingTarget != null)
+            if ((catchingTarget != null) && (catchingTarget.gameObject.CompareTag("Enemy")))
             {
                 catchingTarget.transform.position = hook.transform.position;
                 yield return null;
@@ -272,7 +268,7 @@ public class Hook : MonoBehaviour
         }
 
     }
-    IEnumerator Timer()
+    private IEnumerator Timer()
     {
         yield return new WaitForSeconds(0.5f);
         _rb.velocity = Vector2.zero;
@@ -280,7 +276,8 @@ public class Hook : MonoBehaviour
         catchingTarget = null;
         isCathc = false;
         isHookReload = true;
-        hook.position = direction.normalized * minDistanseHook + (Vector2)transform.position;
+        isCatchEnemy = false;        
+        hook.position = direction.normalized * minDistanseHook + (Vector2)transform.position;       
     }
 
 
@@ -330,10 +327,15 @@ public class Hook : MonoBehaviour
             isCatchEnemy = true;
         }
     }
-    public void StartPullUpHook()
+
+    public void PushMe()
     {
-        StartCoroutine(PullUpHook());
+        isCatchEnemy = false;
+        isCathc = false;
+        isHookReload = true;
+        tryCatchSomthing = false;
     }
+
 }
 
 
