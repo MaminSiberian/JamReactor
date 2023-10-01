@@ -10,6 +10,12 @@ public class FinishPoints : MonoBehaviour, ICanCatching
     [SerializeField] private float minMaxRandomX, minMaxRandomY;    
     [SerializeField] private GameObject textVictory;
     [SerializeField] private GameObject[] particles;
+    [SerializeField] public AudioClip victorySound;
+    private AudioSource _as;
+    private void Start()
+    {
+        _as = GetComponent<AudioSource>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -23,6 +29,7 @@ public class FinishPoints : MonoBehaviour, ICanCatching
     IEnumerator Finish()
     {
         textVictory.SetActive(true);
+        _as.PlayOneShot(victorySound);
         foreach(var particle in particles)
         {
             var randX = Random.Range(-minMaxRandomX, minMaxRandomX);
