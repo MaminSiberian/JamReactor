@@ -53,7 +53,7 @@ public class Hook : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             StartPullUpHook();
         }
@@ -67,7 +67,7 @@ public class Hook : MonoBehaviour
                 tryCatchSomthing = true;
                 StartCoroutine(ThrowHook());
             }
-            else if(!tryCatchSomthing && isCatchEnemy)
+            else if (!tryCatchSomthing && isCatchEnemy)
             {
                 StartCoroutine(ThrowEnemy());
             }
@@ -88,22 +88,25 @@ public class Hook : MonoBehaviour
 
     IEnumerator ThrowEnemy()
     {
-        Debug.Log("Throw Enemy");
-        //PlaySound(sountThrowHook);
-        isCatchEnemy = false;
-        isCathc = false;
-        var enemy = catchingTarget.GetComponent<EnemyController>();
-        enemy.ChangeFall(true);
-        _rb.AddForce(-direction * forcePushMe * Time.deltaTime, ForceMode2D.Impulse);
-        var rbEnemy = catchingTarget.GetComponent<Rigidbody2D>();
-        rbEnemy.AddForce(direction * forcePush, ForceMode2D.Impulse);
-        yield return new WaitForSeconds(0.4f);
-        _rb.velocity = Vector2.zero;
         if (catchingTarget != null)
         {
-            enemy.ChangeFall(false);
-            enemy._iscatch = false;
-            rbEnemy.velocity = Vector2.zero;
+            Debug.Log("Throw Enemy");
+            //PlaySound(sountThrowHook);
+            isCatchEnemy = false;
+            isCathc = false;
+            var enemy = catchingTarget.GetComponent<EnemyController>();
+            enemy.ChangeFall(true);
+            _rb.AddForce(-direction * forcePushMe * Time.deltaTime, ForceMode2D.Impulse);
+            var rbEnemy = catchingTarget.GetComponent<Rigidbody2D>();
+            rbEnemy.AddForce(direction * forcePush, ForceMode2D.Impulse);
+            yield return new WaitForSeconds(0.4f);
+            _rb.velocity = Vector2.zero;
+            if (catchingTarget != null)
+            {
+                enemy.ChangeFall(false);
+                enemy._iscatch = false;
+                rbEnemy.velocity = Vector2.zero;
+            }
         }
         isHookReload = true;
         yield break;
@@ -250,8 +253,6 @@ public class Hook : MonoBehaviour
                 catchingTarget.transform.position = hook.transform.position;
                 yield return null;
             }
-            catchingTarget.transform.position = hook.transform.position;
-            yield return null;
         }
         Debug.Log("Throw Enemy");
         yield break;
@@ -261,11 +262,11 @@ public class Hook : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            
+
             StartCoroutine(Timer());
-            
+
         }
-        if(collision.gameObject.CompareTag("Thorn"))
+        if (collision.gameObject.CompareTag("Thorn"))
         {
             Debug.Log("Dead");
         }
