@@ -406,7 +406,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -10
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -10925,18 +10925,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8966006437153986284}
     m_Modifications:
-    - target: {fileID: 5112767451734353313, guid: b2b85cdcd388d0f4eb193369a3693db5, type: 3}
-      propertyPath: speed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5112767451734353313, guid: b2b85cdcd388d0f4eb193369a3693db5, type: 3}
-      propertyPath: moveSpots.Array.data[0]
-      value: 
-      objectReference: {fileID: 330505900129383862}
-    - target: {fileID: 5112767451734353313, guid: b2b85cdcd388d0f4eb193369a3693db5, type: 3}
-      propertyPath: moveSpots.Array.data[1]
-      value: 
-      objectReference: {fileID: 2750510130315651300}
     - target: {fileID: 2465191286795931351, guid: 23cd3b7b01386f94e877f1ee2d97b0de, type: 3}
       propertyPath: moveSpots.Array.size
       value: 2
@@ -10997,6 +10985,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: TraectoryEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 5112767451734353313, guid: b2b85cdcd388d0f4eb193369a3693db5, type: 3}
+      propertyPath: speed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112767451734353313, guid: b2b85cdcd388d0f4eb193369a3693db5, type: 3}
+      propertyPath: moveSpots.Array.data[0]
+      value: 
+      objectReference: {fileID: 330505900129383862}
+    - target: {fileID: 5112767451734353313, guid: b2b85cdcd388d0f4eb193369a3693db5, type: 3}
+      propertyPath: moveSpots.Array.data[1]
+      value: 
+      objectReference: {fileID: 2750510130315651300}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
