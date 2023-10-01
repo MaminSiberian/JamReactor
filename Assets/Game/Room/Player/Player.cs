@@ -83,7 +83,7 @@ namespace Room
         }
         public void GetOculus(OculusController oculus, float time)
         {
-            audioDirector.PlayOculusSound();
+            //audioDirector.PlayOculusSound();
             isControllable = false;
             GameDirector.oculusOnThePlayer = true;
             tween = oculus.transform.DOMove(oculusSeat.position, time).OnKill(PlayGame);

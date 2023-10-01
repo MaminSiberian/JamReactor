@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Game/Room/Room.unity
     guid: eece247751a715944ae95d0fe3228946
   - enabled: 1
-    path: Assets/Scenes/TwoScene.unity
+    path: Assets/Scenes/TwoLevel.unity
     guid: 04824b678be98f648992f97b0110ec2b
   m_configObjects: {}

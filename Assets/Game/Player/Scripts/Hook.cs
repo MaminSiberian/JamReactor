@@ -238,14 +238,21 @@ public class Hook : MonoBehaviour
 
     IEnumerator CathcTargetInHook()
     {
-
-        while (isCatchEnemy)
-        {
-            catchingTarget.transform.position = hook.transform.position;
-            yield return null;
-        }
-        Debug.Log("Throw Enemy");
-        yield break;
+        
+        
+            while (isCatchEnemy)
+            {
+                if (catchingTarget != null)
+                {
+                    catchingTarget.transform.position = hook.transform.position;
+                    yield return null;
+                }
+                else 
+                    yield return null;
+            }
+            Debug.Log("Throw Enemy");
+            yield break;
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

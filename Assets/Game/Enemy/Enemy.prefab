@@ -269,6 +269,7 @@ MonoBehaviour:
   pivot: {fileID: 1065453578169812615}
   _iscatch: 0
   isFall: 0
+  isOn: 1
 --- !u!1 &4172031408087866550
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,4 +1,6 @@
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Thorns : MonoBehaviour
 {
@@ -7,7 +9,7 @@ public class Thorns : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("dead");
+            SceneManager.LoadScene("TwoLevel");
 
         }
         if(collision.gameObject.CompareTag("Enemy") )

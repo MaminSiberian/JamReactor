@@ -6077,6 +6077,7 @@ MonoBehaviour:
   playerSpeed: 300
   sprite: {fileID: 159872741}
   oculusSeat: {fileID: 929625630}
+  audioDirector: {fileID: 1240814508}
   isControllable: 0
 --- !u!82 &329805160
 AudioSource:
@@ -18015,6 +18016,7 @@ MonoBehaviour:
   TVEventSound: {fileID: 2079313493}
   catSound: {fileID: 895632718}
   crackSound: {fileID: 200985591}
+  oculusSound: {fileID: 0}
 --- !u!82 &1240814509
 AudioSource:
   m_ObjectHideFlags: 0
