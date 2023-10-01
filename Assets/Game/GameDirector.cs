@@ -89,6 +89,6 @@ public class GameDirector : MonoBehaviour
     }
     public static void PlayGame()
     {
-        PlayNextRoomEvent(); // ПОМЕНЯТЬ ПОТОМ
+        SceneManager.LoadScene("TwoScene");
     }
 }
