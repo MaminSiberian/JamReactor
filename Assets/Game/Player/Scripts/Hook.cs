@@ -40,11 +40,12 @@ public class Hook : MonoBehaviour
     [SerializeField] private float forcePushMe;
     private Rigidbody2D _rb;
     private float pitch;
+    private float timeReloadHook;
 
 
     private void Start()
     {
-
+        timeReloadHook = timeThrowHook + timePullUpHook + 0.05f;
         audioSource = GetComponent<AudioSource>();
         pitch = audioSource.pitch;
         _rb = GetComponent<Rigidbody2D>();
@@ -57,7 +58,8 @@ public class Hook : MonoBehaviour
         if ((Input.GetMouseButtonDown(0)) && (isHookReload))
         {
             isHookReload = false;
-
+            Invoke("ReloadHook", timeReloadHook);
+            Invoke("ReloadHook", timeReloadHook * 2);
             if ((!tryCatchSomthing) && (!isCatchEnemy))
             {
                 tryCatchSomthing = true;
@@ -65,13 +67,26 @@ public class Hook : MonoBehaviour
             }
             else if (!tryCatchSomthing && isCatchEnemy)
             {
-                StartCoroutine(ThrowEnemy());
+                if ((catchingTarget != null) && (catchingTarget.gameObject.CompareTag("Enemy")))
+                    StartCoroutine(ThrowEnemy());
             }
             _rb.velocity = Vector3.zero;
         }
         else
             if (!tryCatchSomthing)
             TurnInDirection();
+    }
+
+    private void ReloadHook()
+    {
+        //    _rb.velocity = Vector2.zero;
+        //    tryCatchSomthing = false;
+        //    catchingTarget = null;
+        //    isCathc = false;
+        isHookReload = true;
+        hook.position = direction.normalized * minDistanseHook + (Vector2)transform.position;
+        //isCatchEnemy = false;
+        //hook.position = direction.normalized * minDistanseHook + (Vector2)transform.position;
     }
     private void PlaySound(AudioClip clip)
     {
@@ -104,16 +119,12 @@ public class Hook : MonoBehaviour
                 rbEnemy.velocity = Vector2.zero;
             }
         }
-        isHookReload = true;
+        //isHookReload = true;
         yield break;
     }
 
 
 
-    private void FixedUpdate()
-    {
-
-    }
 
     private void TurnInDirection()
     {
@@ -132,7 +143,6 @@ public class Hook : MonoBehaviour
         var startPos = direction.normalized * minDistanseHook + (Vector2)transform.position;
         var endPos = direction.normalized * maxDistanseHook + (Vector2)transform.position;
         float current = 0;
-        //StartCoroutine(MoveToTarget(startPos, endPos, timeThrowHook));
         while (current < 1)
         {
             CheckColllision();
@@ -178,7 +188,7 @@ public class Hook : MonoBehaviour
         }
         tryCatchSomthing = false;
         isCathc = false;
-        isHookReload = true;
+        //isHookReload = true;
         hook.position = direction.normalized * minDistanseHook + (Vector2)transform.position;
         Debug.Log("hook on min");
         yield break;
@@ -208,7 +218,7 @@ public class Hook : MonoBehaviour
         hook.position = direction.normalized * minDistanseHook + (Vector2)transform.position;
         tryCatchSomthing = false;
         isCathc = false;
-        isHookReload = true;
+        //isHookReload = true;
         Debug.Log("PullUpToPoint");
         yield break;
     }
@@ -234,7 +244,7 @@ public class Hook : MonoBehaviour
         tryCatchSomthing = false;
         isCatchEnemy = true;
         StartCoroutine(CathcTargetInHook());
-        isHookReload = true;
+        //isHookReload = true;
         Debug.Log("hook on min");
         yield break;
     }
@@ -275,9 +285,10 @@ public class Hook : MonoBehaviour
         tryCatchSomthing = false;
         catchingTarget = null;
         isCathc = false;
-        isHookReload = true;
+        //isHookReload = true;
         isCatchEnemy = false;
         hook.position = direction.normalized * minDistanseHook + (Vector2)transform.position;
+        yield break;
     }
 
 
@@ -328,13 +339,13 @@ public class Hook : MonoBehaviour
         }
     }
 
-    public void PushMe()
-    {
-        isCatchEnemy = false;
-        isCathc = false;
-        isHookReload = true;
-        tryCatchSomthing = false;
-    }
+    //public void PushMe()
+    //{
+    //    isCatchEnemy = false;
+    //    isCathc = false;
+    //    isHookReload = true;
+    //    tryCatchSomthing = false;
+    //}
 
 }
 
