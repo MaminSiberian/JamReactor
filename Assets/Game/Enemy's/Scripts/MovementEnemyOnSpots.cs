@@ -43,12 +43,18 @@ public class MovementEnemyOnSpots : MonoBehaviour
         {
             if (waitTime <= 0)
             {
-                if(Direction())
+                if (Direction())
                 {
-                    countSpot++;
+                    if (waitTime + -1f > 0)
+                    {
+                        countSpot++;
+                    }
                 }
                 else
+                    if (waitTime + -1f > 0)
+                {
                     countSpot--;
+                }
                 waitTime = startMoveTime;
             }
             else
