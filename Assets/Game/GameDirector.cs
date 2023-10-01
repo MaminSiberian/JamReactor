@@ -5,6 +5,7 @@ using NaughtyAttributes;
 public class GameDirector : MonoBehaviour
 {
     #region FOR_TESTING
+    [SerializeField] private int _levelToLoad;
     [SerializeField] private RoomEvent _eventToHappen;
     [SerializeField] private bool _oculusOnThePlayer;
     [SerializeField] private bool _vaseIsBroken;
@@ -19,7 +20,7 @@ public class GameDirector : MonoBehaviour
 
     public static bool oculusOnThePlayer;
 
-    public static RoomEvent eventToHappen;
+    public static RoomEvent eventToHappen = RoomEvent.None;
     public static bool vaseIsBroken { get; private set; } // 1
     public static bool catIsGone { get; private set; } // 2
     public static bool TVIsBroken { get; private set; } // 3
@@ -53,6 +54,7 @@ public class GameDirector : MonoBehaviour
     [Button]
     private void SetRoomConfig()
     {
+        levelToLoad = _levelToLoad;
         eventToHappen = _eventToHappen;
         oculusOnThePlayer = _oculusOnThePlayer;
         vaseIsBroken = _vaseIsBroken;
@@ -96,7 +98,5 @@ public class GameDirector : MonoBehaviour
         levelToLoad++;
 
         SceneManager.LoadScene(levelStr + levelToLoad);
-
-        //SceneManager.LoadScene("TwoLevel");
     }
 }
