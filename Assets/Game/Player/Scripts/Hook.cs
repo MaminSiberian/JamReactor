@@ -298,6 +298,7 @@ public class Hook : MonoBehaviour
 
     private IEnumerator Death()
     {
+        StopAllCoroutines();
         var particels = Instantiate(particleDeath, transform.position, transform.rotation);
         particels.SetActive(true);
         gameObject.GetComponent<Collider2D>().enabled = false;
