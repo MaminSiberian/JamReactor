@@ -15,6 +15,7 @@ public class FinishPoints : MonoBehaviour, ICanCatching
     private void Start()
     {
         _as = GetComponent<AudioSource>();
+        _as.PlayOneShot(victorySound);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
