@@ -83,28 +83,25 @@ public class Hook : MonoBehaviour
 
     IEnumerator ThrowEnemy()
     {
+        Debug.Log("Throw Enemy");
+        //PlaySound(sountThrowHook);
+        isCatchEnemy = false;
+        isCathc = false;
+        var enemy = catchingTarget.GetComponent<EnemyController>();
+        enemy.ChangeFall(true);
+        _rb.AddForce(-direction * forcePushMe * Time.deltaTime, ForceMode2D.Impulse);
+        var rbEnemy = catchingTarget.GetComponent<Rigidbody2D>();
+        rbEnemy.AddForce(direction * forcePush, ForceMode2D.Impulse);
+        yield return new WaitForSeconds(0.4f);
+        _rb.velocity = Vector2.zero;
         if (catchingTarget != null)
         {
-            Debug.Log("Throw Enemy");
-            //PlaySound(sountThrowHook);
-            isCatchEnemy = false;
-            isCathc = false;
-            var enemy = catchingTarget.GetComponent<EnemyController>();
-            enemy.ChangeFall(true);
-            _rb.AddForce(-direction * forcePushMe * Time.deltaTime, ForceMode2D.Impulse);
-            var rbEnemy = catchingTarget.GetComponent<Rigidbody2D>();
-            rbEnemy.AddForce(direction * forcePush, ForceMode2D.Impulse);
-            yield return new WaitForSeconds(0.4f);
-            _rb.velocity = Vector2.zero;
-            if (catchingTarget != null)
-            {
-                enemy.ChangeFall(false);
-                enemy._iscatch = false;
-                rbEnemy.velocity = Vector2.zero;
-            }
-            isHookReload = true;
-            yield break;
+            enemy.ChangeFall(false);
+            enemy._iscatch = false;
+            rbEnemy.velocity = Vector2.zero;
         }
+        isHookReload = true;
+        yield break;
     }
 
 
@@ -218,14 +215,11 @@ public class Hook : MonoBehaviour
         float current = 0;
         while (current < 1)
         {
-            if (catchingTarget != null)
-            {
-                hook.position = Vector2.Lerp(startPos, endPos, current);
-                catchingTarget.transform.position = hook.transform.position;
-                current += Time.deltaTime / timePullUpHook;
-                yield return null;
-            }
-            else break;
+
+            hook.position = Vector2.Lerp(startPos, endPos, current);
+            catchingTarget.transform.position = hook.transform.position;
+            current += Time.deltaTime / timePullUpHook;
+            yield return null;
         }
         tryCatchSomthing = false;
         isCatchEnemy = true;
@@ -238,21 +232,18 @@ public class Hook : MonoBehaviour
 
     IEnumerator CathcTargetInHook()
     {
-        
-        
-            while (isCatchEnemy)
+        while (isCatchEnemy)
+        {
+            if (catchingTarget != null)
             {
-                if (catchingTarget != null)
-                {
-                    catchingTarget.transform.position = hook.transform.position;
-                    yield return null;
-                }
-                else 
-                    yield return null;
+                catchingTarget.transform.position = hook.transform.position;
+                yield return null;
             }
-            Debug.Log("Throw Enemy");
-            yield break;
-        
+            catchingTarget.transform.position = hook.transform.position;
+            yield return null;
+        }
+        Debug.Log("Throw Enemy");
+        yield break;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
