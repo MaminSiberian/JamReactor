@@ -12,9 +12,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 4288223258987489455, guid: fde745796c5bef149824bc2c046244a6, type: 3}
+      propertyPath: m_Color.b
+      value: 0.82269657
+      objectReference: {fileID: 0}
+    - target: {fileID: 4288223258987489455, guid: fde745796c5bef149824bc2c046244a6, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4288223258987489455, guid: fde745796c5bef149824bc2c046244a6, type: 3}
+      propertyPath: m_Color.r
+      value: 0.5226415
+      objectReference: {fileID: 0}
+    - target: {fileID: 5523325866633911255, guid: fde745796c5bef149824bc2c046244a6, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 5523325866633911255, guid: fde745796c5bef149824bc2c046244a6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.85
+      objectReference: {fileID: 0}
     - target: {fileID: 5838118231279983717, guid: fde745796c5bef149824bc2c046244a6, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5838118231279983717, guid: fde745796c5bef149824bc2c046244a6, type: 3}
       propertyPath: m_LocalPosition.x

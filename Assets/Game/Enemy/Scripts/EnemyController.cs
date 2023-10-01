@@ -74,6 +74,7 @@ public class EnemyController : MonoBehaviour, ICanCatching
     {
         if (isFall && collision.gameObject.CompareTag("Enemy"))
         {
+            Instantiate(boomDeadParticles, collision.transform.position, transform.rotation);
             Destroy(collision.gameObject);
             Instantiate(boomDeadParticles, transform.position, transform.rotation);
             Destroy(gameObject);

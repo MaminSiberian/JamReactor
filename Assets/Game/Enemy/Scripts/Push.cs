@@ -15,7 +15,7 @@ public class Push : MonoBehaviour
         {
             if (collision.gameObject.CompareTag("Player"))
             {
-                _anim.SetTrigger("Attack");
+                
                 Instantiate(pushFX, collision.transform.position, transform.rotation);
                 pushSource.PlayOneShot(pushClip);
                 var direction = collision.transform.position - transform.position;

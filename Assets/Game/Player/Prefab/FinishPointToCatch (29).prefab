@@ -14610,7 +14610,7 @@ Transform:
   - {fileID: 497063450206383855}
   - {fileID: 4810817734939951406}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.186}
 --- !u!50 &3857517137946564884
 Rigidbody2D:
@@ -14691,7 +14691,15 @@ MonoBehaviour:
   minMaxRandomX: 15
   minMaxRandomY: 10
   textVictory: {fileID: 4459616860211951518}
-  particles: []
+  particles:
+  - {fileID: 3034865450049104918}
+  - {fileID: 5669537608924610335}
+  - {fileID: 7670226486112215470}
+  - {fileID: 8070015734474274845}
+  - {fileID: 6356622114216144783}
+  - {fileID: 5187741005924806493}
+  - {fileID: 665537040200981447}
+  - {fileID: 500340978235714671}
 --- !u!1 &5187741005924806493
 GameObject:
   m_ObjectHideFlags: 0
