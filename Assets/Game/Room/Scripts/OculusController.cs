@@ -14,11 +14,13 @@ namespace Room
 
         private Rigidbody2D rb;
         private Collider2D coll;
+        private AudioSource audioSource;
 
         private void Awake()
         {
             rb = GetComponent<Rigidbody2D>();
             coll = GetComponent<Collider2D>();
+            audioSource = GetComponent<AudioSource>();
         }
         private void Start()
         {
@@ -48,6 +50,7 @@ namespace Room
         [Button]
         public void GetOculus()
         {
+            audioSource.Play();
             rb.gravityScale = 0;
             player.GetOculus(this, setupTime);
         }
