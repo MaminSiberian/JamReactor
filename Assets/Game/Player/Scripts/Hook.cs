@@ -234,6 +234,11 @@ public class Hook : MonoBehaviour
     {
         while (isCatchEnemy)
         {
+            if (catchingTarget != null)
+            {
+                catchingTarget.transform.position = hook.transform.position;
+                yield return null;
+            }
             catchingTarget.transform.position = hook.transform.position;
             yield return null;
         }

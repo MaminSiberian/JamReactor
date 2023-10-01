@@ -30,7 +30,7 @@ public class FinishPoints : MonoBehaviour, ICanCatching
             var randY = Random.Range(-minMaxRandomY, minMaxRandomY);
             particle.transform.localPosition = new Vector2(randX, randY) ;
             particle.SetActive(true);
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0.2f);
         }
         yield return new WaitForSeconds(timeWaitToVictory);
         SceneManager.LoadScene(scenID);
