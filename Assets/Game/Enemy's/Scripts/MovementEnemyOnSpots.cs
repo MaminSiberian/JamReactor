@@ -31,6 +31,7 @@ public class MovementEnemyOnSpots : MonoBehaviour
     private void Update()
     {
 
+
         if (isRotate)
         {
             Vector2 lookDir = moveSpots[countSpot].position - transform.position;
