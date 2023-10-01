@@ -11,7 +11,6 @@ public class FinishPoints : MonoBehaviour, ICanCatching
     [SerializeField] private GameObject textVictory;
     [SerializeField] private GameObject[] particles;
 
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -33,6 +32,8 @@ public class FinishPoints : MonoBehaviour, ICanCatching
             yield return new WaitForSeconds(0.2f);
         }
         yield return new WaitForSeconds(timeWaitToVictory);
-        SceneManager.LoadScene(scenID);
+        //SceneManager.LoadScene(scenID);
+
+        GameDirector.PlayNextRoomEvent();
     }
 }
