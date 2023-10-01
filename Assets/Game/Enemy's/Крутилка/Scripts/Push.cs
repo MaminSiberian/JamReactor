@@ -19,7 +19,7 @@ public class Push : MonoBehaviour
                 Instantiate(pushFX, collision.transform.position, transform.rotation);
                 pushSource.PlayOneShot(pushClip);
                 var direction = collision.transform.position - transform.position;
-                collision.rigidbody.AddForce(direction * forcePush * Time.deltaTime, ForceMode2D.Impulse);
+                collision.rigidbody.AddForce(direction * forcePush, ForceMode2D.Impulse);
             }
         }
     }

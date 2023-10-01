@@ -29,8 +29,8 @@ public class Patrole : MonoBehaviour
                     if (waitTime <= 0)
                     {
 
-                        var x = Random.Range(-distance, distance);
-                        var y = Random.Range(-distance, distance);
+                        var x = transform.position.x + Random.Range(-distance, distance);
+                        var y = transform.position.y + Random.Range(-distance, distance);
                         randomPosition = new Vector2(x, y);
                         waitTime = cooldown;
                     }
