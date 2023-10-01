@@ -349,6 +349,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: ParticleBackGroundLevel
       objectReference: {fileID: 0}
+    - target: {fileID: 5011850446156163525, guid: e3d57801192bbf647a9a5db23f6ea51e, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6491626646633491689, guid: e3d57801192bbf647a9a5db23f6ea51e, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7069108546984841260, guid: e3d57801192bbf647a9a5db23f6ea51e, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1076,15 +1084,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8404583464293374761, guid: 433db555e745d954481e4bdc26836c0a, type: 3}
       propertyPath: m_Color.b
-      value: 0.23529412
+      value: 0.0754717
       objectReference: {fileID: 0}
     - target: {fileID: 8404583464293374761, guid: 433db555e745d954481e4bdc26836c0a, type: 3}
       propertyPath: m_Color.g
-      value: 0.23137255
+      value: 0.0754717
       objectReference: {fileID: 0}
     - target: {fileID: 8404583464293374761, guid: 433db555e745d954481e4bdc26836c0a, type: 3}
       propertyPath: m_Color.r
-      value: 0.21176471
+      value: 0.0754717
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -264,7 +264,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 16816630280538361, guid: 096e39a0763dd2b4f93d01b47dea95c4, type: 3}
       propertyPath: orthographic size
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 16816630280538361, guid: 096e39a0763dd2b4f93d01b47dea95c4, type: 3}
       propertyPath: m_CullingMask.m_Bits
@@ -304,7 +304,7 @@ PrefabInstance:
       objectReference: {fileID: 445821096}
     - target: {fileID: 5969757765117046791, guid: 096e39a0763dd2b4f93d01b47dea95c4, type: 3}
       propertyPath: m_Lens.OrthographicSize
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7036402703261100408, guid: 096e39a0763dd2b4f93d01b47dea95c4, type: 3}
       propertyPath: m_RootOrder
@@ -472,6 +472,18 @@ PrefabInstance:
     - target: {fileID: 2153712242071475468, guid: f5107d93415043140ab8e9f4355a27b2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2869572276136039868, guid: f5107d93415043140ab8e9f4355a27b2, type: 3}
+      propertyPath: m_Color.b
+      value: 0.07450981
+      objectReference: {fileID: 0}
+    - target: {fileID: 2869572276136039868, guid: f5107d93415043140ab8e9f4355a27b2, type: 3}
+      propertyPath: m_Color.g
+      value: 0.07450981
+      objectReference: {fileID: 0}
+    - target: {fileID: 2869572276136039868, guid: f5107d93415043140ab8e9f4355a27b2, type: 3}
+      propertyPath: m_Color.r
+      value: 0.07450981
       objectReference: {fileID: 0}
     - target: {fileID: 6878466653494350823, guid: f5107d93415043140ab8e9f4355a27b2, type: 3}
       propertyPath: m_Name
