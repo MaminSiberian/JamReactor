@@ -53,16 +53,21 @@ public class Hook : MonoBehaviour
 
     private void Update()
     {
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            StartPullUpHook();
+        }
 
         if ((Input.GetMouseButtonDown(0)) && (isHookReload))
         {
             isHookReload = false;
+
             if ((!tryCatchSomthing) && (!isCatchEnemy))
             {
                 tryCatchSomthing = true;
                 StartCoroutine(ThrowHook());
             }
-            else
+            else if(!tryCatchSomthing && isCatchEnemy)
             {
                 StartCoroutine(ThrowEnemy());
             }
@@ -189,12 +194,15 @@ public class Hook : MonoBehaviour
         float current = 0;
         while (current < 1)
         {
-            transform.position = Vector2.Lerp(startPos, endPos, current);
-            hook.position = endPos;
-            current += Time.deltaTime / timePullUpHook;
-            if (Vector2.Distance(catchingTarget.transform.position, transform.position) < 0.1f)
+            if (catchingTarget != null)
             {
-                transform.position = endPos;
+                transform.position = Vector2.Lerp(startPos, endPos, current);
+                hook.position = endPos;
+                current += Time.deltaTime / timePullUpHook;
+                if (Vector2.Distance(catchingTarget.transform.position, transform.position) < 0.1f)
+                {
+                    transform.position = endPos;
+                }
             }
             yield return null;
         }
@@ -253,8 +261,13 @@ public class Hook : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            StopAllCoroutines();
+            
             StartCoroutine(Timer());
+            
+        }
+        if(collision.gameObject.CompareTag("Thorn"))
+        {
+            Debug.Log("Dead");
         }
 
     }
@@ -315,6 +328,10 @@ public class Hook : MonoBehaviour
             Debug.Log(enemy);
             isCatchEnemy = true;
         }
+    }
+    public void StartPullUpHook()
+    {
+        StartCoroutine(PullUpHook());
     }
 }
 

@@ -6,7 +6,6 @@ public class Patrole : MonoBehaviour
     public float cooldown = 1f;
     public float distance = 3f;
     private Vector2 randomPosition;
-    private bool _isCathing;
     private float waitTime;
     private EnemyController _enemyController;
     private void Start()
@@ -55,6 +54,8 @@ public class Patrole : MonoBehaviour
                 randomPosition = new Vector2(x, y);
                 waitTime = cooldown;
             }
+            
         }
     }
+    
 }

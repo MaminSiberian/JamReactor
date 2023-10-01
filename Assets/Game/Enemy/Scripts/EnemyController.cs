@@ -14,6 +14,7 @@ public class EnemyController : MonoBehaviour, ICanCatching
     public bool _iscatch;
     public bool isFall;
     public bool isOn;
+    public GameObject boomDeadParticles;
     private Rigidbody2D _rb;
     
 
@@ -37,6 +38,7 @@ public class EnemyController : MonoBehaviour, ICanCatching
             if (_distance < visibleDistance)
             {
                 isAttack = true;
+                
                 transform.position = Vector2.MoveTowards(transform.position,
                     player.transform.position,
                     speed * Time.deltaTime);
@@ -73,7 +75,15 @@ public class EnemyController : MonoBehaviour, ICanCatching
         if (isFall && collision.gameObject.CompareTag("Enemy"))
         {
             Destroy(collision.gameObject);
+            Instantiate(boomDeadParticles, transform.position, transform.rotation);
             Destroy(gameObject);
         }
+        if(isFall && collision.gameObject.CompareTag("Thorn"))
+        {
+            Instantiate(boomDeadParticles, transform.position, transform.rotation);
+            Destroy(gameObject);
+            
+        }
     }
+    
 }
