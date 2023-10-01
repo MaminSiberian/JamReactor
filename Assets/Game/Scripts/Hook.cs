@@ -75,7 +75,7 @@ public class Hook : MonoBehaviour
             catchingTarget.GetComponent<EnemyController>().ChangeFall(true);
             _rb.AddForce(-direction * forcePushMe * Time.deltaTime, ForceMode2D.Impulse);
             catchingTarget.GetComponent<Rigidbody2D>().AddForce(direction * forcePush, ForceMode2D.Impulse);
-            yield return new WaitForSeconds(0.7f);
+            yield return new WaitForSeconds(0.5f);
             _rb.velocity = Vector2.zero;
             if(catchingTarget != null)
             {

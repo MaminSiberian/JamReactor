@@ -12,6 +12,7 @@ public class ShootingEnemy : MonoBehaviour
     public bool isAttack { get; private set; }
     [Header("Rotate on Enemy Properties")]
     public float speedRotation;
+    public float angleOffSet;
     [Header("Audio Properties")]
     public AudioClip[] attackShots;
 
@@ -36,7 +37,7 @@ public class ShootingEnemy : MonoBehaviour
     public void Rotate()
     {
         Vector2 lookDir = player.transform.position - transform.position;
-        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
+        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg + angleOffSet;
         _rb.rotation = Mathf.LerpAngle(_rb.rotation, angle, Time.deltaTime * speedRotation);
     }
     public void Shoot()
@@ -64,9 +65,10 @@ public class ShootingEnemy : MonoBehaviour
         direction.Normalize();
         if (_distance < visibleDistance)
         {
-            isAttack = true;
+            
             if (!_enemyController._iscatch)
             {
+                isAttack = true;
                 Rotate();
                 if (timeFire <= 0)
                 {

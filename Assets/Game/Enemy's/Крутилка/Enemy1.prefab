@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2502942084337359470}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 3831890530401515453}
   - component: {fileID: 7966922180085426794}
   - component: {fileID: 82524232126245315}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Enemy1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -104,13 +104,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11a440b68a2e39c448a5753f1bb44e63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  speed: 1
+  speed: 2
   speedAngle: -500
-  visibleDistance: 4
+  visibleDistance: 7
   pivot: {fileID: 2502942084337359470}
   _iscatch: 0
   isFall: 0
+  isOn: 1
 --- !u!50 &5673592662298047387
 Rigidbody2D:
   serializedVersion: 4
@@ -126,7 +126,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -168,9 +168,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2503829a698d0e546856bd9ffca590ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 1.5
   cooldown: 1
-  distance: 3
+  distance: 4
 --- !u!82 &7966922180085426794
 AudioSource:
   m_ObjectHideFlags: 0
@@ -316,15 +316,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8653719598885068355, guid: d03abaa54471e69498d7ee1798ddbe77, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: -8508832959432291146, guid: d03abaa54471e69498d7ee1798ddbe77, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: -8373232436742993763, guid: d03abaa54471e69498d7ee1798ddbe77, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: d03abaa54471e69498d7ee1798ddbe77, type: 3}
       propertyPath: m_RootOrder
@@ -372,11 +372,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6757517157170357088, guid: d03abaa54471e69498d7ee1798ddbe77, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: -4793857363042505152, guid: d03abaa54471e69498d7ee1798ddbe77, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

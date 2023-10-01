@@ -13,6 +13,7 @@ public class EnemyController : MonoBehaviour, ICanCatching
     private bool isAttack;
     public bool _iscatch;
     public bool isFall;
+    public bool isOn;
     private Rigidbody2D _rb;
     
 
@@ -24,7 +25,7 @@ public class EnemyController : MonoBehaviour, ICanCatching
     }
     private void Update()
     {
-        if (!_iscatch && !isFall)
+        if (!_iscatch && !isFall && isOn)
         {
             _distance = Vector2.Distance(transform.position, player.transform.position);
             Vector2 direction = player.transform.position - transform.position;

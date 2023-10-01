@@ -2,13 +2,20 @@ using UnityEngine;
 
 public class Thorns : MonoBehaviour
 {
-    public int damage;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<Health>().Takedamage(damage);
+            Debug.Log("dead");
+
+        }
+        if(collision.gameObject.CompareTag("Enemy") )
+        {
+            if(collision.gameObject.GetComponent<EnemyController>().isFall)
+            {
+                Destroy(collision.gameObject);
+            }
         }
     }
     
