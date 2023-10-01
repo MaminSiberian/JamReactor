@@ -16,7 +16,7 @@ public class EnemyController : MonoBehaviour, ICanCatching
     public bool isOn;
     public GameObject boomDeadParticles;
     private Rigidbody2D _rb;
-    
+
 
     private void Start()
     {
@@ -38,7 +38,7 @@ public class EnemyController : MonoBehaviour, ICanCatching
             if (_distance < visibleDistance)
             {
                 isAttack = true;
-                
+
                 transform.position = Vector2.MoveTowards(transform.position,
                     player.transform.position,
                     speed * Time.deltaTime);
@@ -62,13 +62,15 @@ public class EnemyController : MonoBehaviour, ICanCatching
     }
     public void ChangeFall(bool value)
     {
+
         isFall = value;
-        if (isFall)
-        {
-            _rb.bodyType = RigidbodyType2D.Dynamic;
-        }
-        else
-            _rb.bodyType = RigidbodyType2D.Kinematic;
+        if (_rb != null)
+            if (isFall)
+            {
+                _rb.bodyType = RigidbodyType2D.Dynamic;
+            }
+            else
+                _rb.bodyType = RigidbodyType2D.Kinematic;
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -79,12 +81,12 @@ public class EnemyController : MonoBehaviour, ICanCatching
             Instantiate(boomDeadParticles, transform.position, transform.rotation);
             Destroy(gameObject);
         }
-        if(isFall && collision.gameObject.CompareTag("Thorn"))
+        if (isFall && collision.gameObject.CompareTag("Thorn"))
         {
             Instantiate(boomDeadParticles, transform.position, transform.rotation);
             Destroy(gameObject);
-            
+
         }
     }
-    
+
 }

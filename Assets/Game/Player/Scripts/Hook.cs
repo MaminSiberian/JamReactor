@@ -122,7 +122,7 @@ public class Hook : MonoBehaviour
             rbEnemy.AddForce(direction * forcePush, ForceMode2D.Impulse);
             yield return new WaitForSeconds(0.4f);
             _rb.velocity = Vector2.zero;
-            if (catchingTarget != null)
+            if ((catchingTarget != null) && (rbEnemy != null))
             {
                 enemy.ChangeFall(false);
                 enemy._iscatch = false;
