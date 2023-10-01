@@ -8,6 +8,7 @@ TagManager:
   - PointToCatch
   - Thorn
   - Wall
+  - Tolkatel
   layers:
   - Default
   - TransparentFX
