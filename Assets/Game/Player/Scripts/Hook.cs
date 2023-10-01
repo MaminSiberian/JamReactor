@@ -4,6 +4,7 @@ using System.Linq.Expressions;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using UnityEngine.SceneManagement;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 using static UnityEngine.GraphicsBuffer;
 
@@ -15,6 +16,9 @@ public enum CatchingVariable
 
 public class Hook : MonoBehaviour
 {
+     private int lavelID;
+    [SerializeField] private float timeToRestartlave;
+
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip sountThrowHook;
     [SerializeField] private AudioClip soundCatchHook;
@@ -31,6 +35,8 @@ public class Hook : MonoBehaviour
     [SerializeField] private bool tryCatchSomthing = false;
     [Range(0f, 5f)][SerializeField] private float intensityShakeCamera;
     [Range(0f, 5f)][SerializeField] private float timeShakeCamera;
+    [SerializeField] private GameObject palyerGFX;
+    [SerializeField] private GameObject particleDeath;
     private bool isHookReload = true;
     private Vector2 direction;
     private CatchingVariable whoCatching;
@@ -42,9 +48,9 @@ public class Hook : MonoBehaviour
     private float pitch;
     private float timeReloadHook;
 
-
     private void Start()
     {
+        lavelID = SceneManager.GetActiveScene().buildIndex;        
         timeReloadHook = timeThrowHook + timePullUpHook + 0.05f;
         audioSource = GetComponent<AudioSource>();
         pitch = audioSource.pitch;
@@ -268,13 +274,11 @@ public class Hook : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-
-            StartCoroutine(Timer());
-
+            StartCoroutine(Death());
         }
         if (collision.gameObject.CompareTag("Thorn"))
         {
-            Debug.Log("Dead");
+            StartCoroutine(Death());
         }
 
     }
@@ -292,6 +296,22 @@ public class Hook : MonoBehaviour
     }
 
 
+    private IEnumerator Death()
+    {
+        var particels = Instantiate(particleDeath, transform.position, transform.rotation);
+        particels.SetActive(true);
+        gameObject.GetComponent<Collider2D>().enabled = false;
+        palyerGFX.SetActive(false);
+        hook.gameObject.SetActive(false);
+        transform.position = particels.transform.position;
+        yield return new WaitForSeconds(timeToRestartlave);
+        SceneManager.LoadScene(lavelID);
+    }
+
+    private object WaitForSeconds(object timeToRestartlave)
+    {
+        throw new System.NotImplementedException();
+    }
 
     private void CheckColllision()
     {
