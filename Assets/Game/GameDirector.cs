@@ -29,6 +29,10 @@ public class GameDirector : MonoBehaviour
 
     private static string roomScene = "Room";
 
+    private static string levelStr = "Level";
+
+    private static int levelToLoad = 0;
+
     private void Awake()
     {
         if (instance != null)
@@ -89,6 +93,10 @@ public class GameDirector : MonoBehaviour
     }
     public static void PlayGame()
     {
-        SceneManager.LoadScene("TwoLevel");
+        levelToLoad++;
+
+        SceneManager.LoadScene(levelStr + levelToLoad);
+
+        //SceneManager.LoadScene("TwoLevel");
     }
 }
