@@ -1037,6 +1037,14 @@ PrefabInstance:
       propertyPath: speed
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 8425181839133695573, guid: 7e8f57014f44bcb44a2af4d333dc385d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -46.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 8425181839133695573, guid: 7e8f57014f44bcb44a2af4d333dc385d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.95
+      objectReference: {fileID: 0}
     - target: {fileID: 8987920800367508072, guid: 7e8f57014f44bcb44a2af4d333dc385d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -46.54
