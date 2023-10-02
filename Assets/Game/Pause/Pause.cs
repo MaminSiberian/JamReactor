@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -39,4 +40,9 @@ public class Pause : MonoBehaviour
     {
         mixer.audioMixer.SetFloat("EffectsVolume", value);
     }
+    public void ExitMethod() 
+    {
+        Application.Quit();
+    }
+    
 }

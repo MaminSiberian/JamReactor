@@ -215,7 +215,7 @@ MonoBehaviour:
   soundPullUpHook: {fileID: 8300000, guid: 130c95d0346616f42ac73c5bf1e037d1, type: 3}
   mainCamera: {fileID: 0}
   hook: {fileID: 9085915719079347408}
-  maxDistanseHook: 8
+  maxDistanseHook: 8.5
   minDistanseHook: 2
   radiusHook: 1
   timeThrowHook: 0.1
@@ -6718,7 +6718,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 30
+      scalar: 20
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -8201,11 +8201,11 @@ ParticleSystem:
     randomizePerFrame: 0
   ExternalForcesModule:
     serializedVersion: 2
-    enabled: 0
+    enabled: 1
     multiplierCurve:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 5
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -8255,11 +8255,12 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    influenceFilter: 0
+    influenceFilter: 1
     influenceMask:
       serializedVersion: 2
       m_Bits: 4294967295
-    influenceList: []
+    influenceList:
+    - {fileID: 7581135708039189583}
   ClampVelocityModule:
     enabled: 0
     x:

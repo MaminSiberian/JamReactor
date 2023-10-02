@@ -31,7 +31,12 @@ public class FinishPoints : MonoBehaviour, ICanCatching
     {
         textVictory.SetActive(true);
         _as.PlayOneShot(victorySound);
-        foreach(var particle in particles)
+        GameObject[] arrayenemy = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (var enemy in arrayenemy)
+        {
+            enemy.GetComponent<EnemyController>().Death();
+        }
+        foreach (var particle in particles)
         {
             var randX = Random.Range(-minMaxRandomX, minMaxRandomX);
             var randY = Random.Range(-minMaxRandomY, minMaxRandomY);
@@ -39,6 +44,7 @@ public class FinishPoints : MonoBehaviour, ICanCatching
             particle.SetActive(true);
             yield return new WaitForSeconds(0.2f);
         }
+        EventManagers.SmoothOn();
         yield return new WaitForSeconds(timeWaitToVictory);
         //SceneManager.LoadScene(scenID);
 

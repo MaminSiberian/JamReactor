@@ -259,8 +259,8 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 0.4392157}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.735849, g: 0, b: 0, a: 0.23529412}
-        key1: {r: 0.98440254, g: 0.53207546, b: 1, a: 0.25882354}
+        key0: {r: 0.735849, g: 0, b: 0, a: 0.3882353}
+        key1: {r: 0.98440254, g: 0.53207546, b: 1, a: 0.3882353}
         key2: {r: 0.49331918, g: 0.22075468, b: 1, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -3854,15 +3854,15 @@ ParticleSystem:
   LightsModule:
     enabled: 0
     ratio: 1
-    light: {fileID: 0}
-    randomDistribution: 1
+    light: {fileID: 6611767159887391807, guid: 38027c5c75dcc6047a4148c681b156e1, type: 3}
+    randomDistribution: 0
     color: 1
-    range: 1
+    range: 0
     intensity: 1
     rangeCurve:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 15.41
+      scalar: 4.5
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4810,7 +4810,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d3bc6f4e3d367a1468ac8ccb7783c9ca, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5087,9 +5087,9 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 0.4392157}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.735849, g: 0, b: 0, a: 0.23529412}
-        key1: {r: 0.98440254, g: 0.53207546, b: 1, a: 0.25882354}
-        key2: {r: 0.49331918, g: 0.22075468, b: 1, a: 0}
+        key0: {r: 0.735849, g: 0, b: 0, a: 0.3882353}
+        key1: {r: 0.98440254, g: 0.53207546, b: 1, a: 0.3882353}
+        key2: {r: 0.49331918, g: 0.22075468, b: 1, a: 0.7254902}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
@@ -5105,7 +5105,7 @@ ParticleSystem:
         ctime7: 0
         atime0: 0
         atime1: 65535
-        atime2: 0
+        atime2: 65535
         atime3: 0
         atime4: 0
         atime5: 0

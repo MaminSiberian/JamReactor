@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
+using System.Collections;
 
 namespace Room
 {
@@ -42,7 +43,15 @@ namespace Room
 
                 endScreen.DOFade(1, time);
                 text.DOFade(1, time);
+                StartCoroutine(ExitGame());
             }
         }
+        private IEnumerator ExitGame()
+        {
+            yield return new WaitForSeconds(time + 0.7f);
+            Application.Quit();
+
+        }
     }
+    
 }

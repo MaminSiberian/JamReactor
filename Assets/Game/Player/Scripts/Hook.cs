@@ -329,6 +329,7 @@ public class Hook : MonoBehaviour
         palyerGFX.SetActive(false);
         hook.gameObject.SetActive(false);
         transform.position = particels.transform.position;
+        EventManagers.SmoothOn();
         
         Invoke("LoadScene", timeToRestartlave);
     }

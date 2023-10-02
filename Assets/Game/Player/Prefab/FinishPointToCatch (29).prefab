@@ -14702,6 +14702,7 @@ MonoBehaviour:
   - {fileID: 665537040200981447}
   - {fileID: 500340978235714671}
   victorySound: {fileID: 8300000, guid: ec8d6bf79de7d5b4f81cce21f351ea41, type: 3}
+  _smoothChangeScene: {fileID: 1378348508787094411, guid: 4e739bcbb907e0941902cf397c2bd59e, type: 3}
 --- !u!82 &6876601150987720254
 AudioSource:
   m_ObjectHideFlags: 0

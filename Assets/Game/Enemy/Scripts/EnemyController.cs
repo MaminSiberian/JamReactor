@@ -88,5 +88,10 @@ public class EnemyController : MonoBehaviour, ICanCatching
 
         }
     }
+    public void Death()
+    {
+        Instantiate(boomDeadParticles, transform.position, transform.rotation);
+        Destroy(gameObject);
+    }
 
 }
